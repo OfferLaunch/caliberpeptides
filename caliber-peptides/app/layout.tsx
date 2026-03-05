@@ -1,6 +1,12 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans, Inter, IBM_Plex_Mono } from "next/font/google";
+import { Tenor_Sans, Plus_Jakarta_Sans, Inter, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+
+const tenorSans = Tenor_Sans({
+  variable: "--font-tenor-sans",
+  subsets: ["latin"],
+  weight: ["400"],
+});
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
@@ -33,7 +39,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${plusJakartaSans.variable} ${inter.variable} ${ibmPlexMono.variable} antialiased`}
+        className={`${tenorSans.variable} ${plusJakartaSans.variable} ${inter.variable} ${ibmPlexMono.variable} antialiased`}
       >
         {children}
       </body>

@@ -91,11 +91,11 @@ export default function ProductDetailPage() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <a href="https://shop.example.com" className="flex-1">
+                <Link href="/products" className="flex-1">
                   <Button variant="primary" size="lg" className="w-full">
                     Buy Now
                   </Button>
-                </a>
+                </Link>
                 <Button variant="secondary" size="lg" className="flex-1">
                   Download COA
                 </Button>

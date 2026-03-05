@@ -57,9 +57,9 @@ npm run lint     # Run ESLint
 - `glass` (#D1DBCB) — Card backgrounds, borders, subtle dividers
 
 **Font Families** (loaded in `app/layout.tsx` via Google Fonts)
-- `font-display` — Plus Jakarta Sans (headings, logos)
-- `font-body` — Plus Jakarta Sans / Inter (body copy)
-- `font-mono` — IBM Plex Mono (technical labels, product codes)
+- `font-display` — **Tenor Sans** (primary logo, headings, hero, section titles)
+- `font-body` — **Inter / Plus Jakarta Sans** (body copy, UI labels, supporting copy; interchangeable)
+- `font-mono` — **IBM Plex Mono** (batch numbers, USP-grade callouts, technical specs; lab aesthetic)
 
 ## Data Structures
 

@@ -14,8 +14,11 @@ const config: Config = {
         glass: '#D1DBCB',
       },
       fontFamily: {
-        display: ['var(--font-tenor-sans)', 'serif'],
+        // Tenor Sans — primary logo & display (headings, hero, section titles)
+        display: ['var(--font-tenor-sans)', 'sans-serif'],
+        // IBM Plex Mono — batch numbers, USP-grade callouts, technical specs
         mono: ['var(--font-ibm-plex-mono)', 'monospace'],
+        // Inter / Plus Jakarta Sans — body (running text, UI labels, supporting copy)
         body: ['var(--font-plus-jakarta-sans)', 'var(--font-inter)', 'sans-serif'],
       },
       spacing: {

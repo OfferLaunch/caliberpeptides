@@ -120,7 +120,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom */}
-        <div className="border-t border-white/20 pt-8">
+        <div className="border-t border-[#D1DBCB] pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-white/70">
             <p>&copy; {currentYear} Caliber Peptides. All rights reserved.</p>
             <p>

@@ -24,13 +24,13 @@ export default function BlogPreview() {
   };
 
   return (
-    <section className="bg-espresso py-16 md:py-24">
+    <section className="bg-parchment py-16 md:py-24 border-b border-[#D1DBCB]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-parchment text-center mb-2">
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-espresso text-center mb-2">
             Research Library
           </h2>
-          <p className="font-body text-lg text-parchment/70 text-center max-w-2xl mx-auto">
+          <p className="font-body text-lg text-espresso/70 text-center max-w-2xl mx-auto">
             Stay informed with expert insights and research updates
           </p>
         </div>
@@ -45,27 +45,27 @@ export default function BlogPreview() {
           {featured.map((post) => (
             <motion.div key={post.id} variants={itemVariants}>
               <Link href={`/blog/${post.slug}`}>
-                <div className="bg-glass/10 rounded-xl overflow-hidden border border-glass/20 hover:border-sage transition-all h-full flex flex-col group cursor-pointer">
+                <div className="bg-white/80 rounded-xl overflow-hidden border border-glass hover:border-sage transition-all h-full flex flex-col group cursor-pointer shadow-sm">
                   {/* Placeholder Image */}
-                  <div className="h-40 bg-gradient-to-br from-sage/30 to-glass/30 flex items-center justify-center">
-                    <span className="text-parchment/40 text-sm">Article</span>
+                  <div className="h-40 bg-gradient-to-br from-sage/20 to-glass/50 flex items-center justify-center">
+                    <span className="text-espresso/40 text-sm">Article</span>
                   </div>
 
                   {/* Content */}
                   <div className="p-6 flex-1 flex flex-col">
                     <div className="flex items-center gap-2 mb-3">
                       <Badge variant="sage">{post.category}</Badge>
-                      <span className="flex items-center gap-1 font-body text-xs text-parchment/60">
+                      <span className="flex items-center gap-1 font-body text-xs text-espresso/60">
                         <Calendar size={12} />
                         {new Date(post.date).toLocaleDateString()}
                       </span>
                     </div>
 
-                    <h3 className="font-body font-semibold text-lg text-parchment mb-3 group-hover:text-sage transition-colors line-clamp-2">
+                    <h3 className="font-body font-semibold text-lg text-espresso mb-3 group-hover:text-sage transition-colors line-clamp-2">
                       {post.title}
                     </h3>
 
-                    <p className="font-body text-sm text-parchment/70 mb-4 flex-1 line-clamp-2">
+                    <p className="font-body text-sm text-espresso/70 mb-4 flex-1 line-clamp-2">
                       {post.excerpt}
                     </p>
 

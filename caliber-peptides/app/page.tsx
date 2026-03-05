@@ -4,6 +4,7 @@ import FeaturedProducts from '@/components/home/FeaturedProducts';
 import CategoryGrid from '@/components/home/CategoryGrid';
 import AboutStrip from '@/components/home/AboutStrip';
 import BlogPreview from '@/components/home/BlogPreview';
+import TestimonialsSection from '@/components/home/TestimonialsSection';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
@@ -17,6 +18,7 @@ export default function Home() {
       <CategoryGrid />
       <AboutStrip />
       <BlogPreview />
+      <TestimonialsSection />
       <Footer />
     </div>
   );
