@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:directpeptides.com)",
+      "Bash(npx create-next-app@latest:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(\"/Users/jacobarnold/Caliber Peptides/caliber-peptides/public/logos/.gitkeep\":*)",
+      "Bash(pkill:*)"
+    ]
+  }
+}
