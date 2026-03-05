@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import Button from '@/components/ui/Button';
 
@@ -37,6 +38,17 @@ export default function Hero() {
           initial="hidden"
           animate="visible"
         >
+          <motion.div variants={itemVariants} className="flex justify-center mb-8">
+            <Image
+              src="/logos/Full Logos/All Oatmeal Full.png"
+              alt="Caliber Peptides"
+              width={56}
+              height={56}
+              style={{ width: 'auto', height: '56px' }}
+              priority
+            />
+          </motion.div>
+
           <motion.div variants={itemVariants}>
             <h1 className="font-display text-4xl md:text-6xl font-bold mb-6 leading-tight">
               Precision. Purity. Research.

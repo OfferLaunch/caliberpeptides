@@ -11,9 +11,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Company Info */}
           <div>
-            <h3 className="font-display text-xl font-bold text-sage mb-4">
-              Caliber Peptides
-            </h3>
+            <div className="mb-4">
+              <Image
+                src="/logos/Full Logos/All Oatmeal Full.png"
+                alt="Caliber Peptides"
+                width={40}
+                height={40}
+                style={{ width: 'auto', height: '40px' }}
+              />
+            </div>
             <p className="font-body text-sm text-parchment/80 mb-4">
               Research-grade peptides with uncompromising quality standards.
             </p>
