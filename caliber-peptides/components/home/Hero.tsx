@@ -40,7 +40,7 @@ export default function Hero() {
         >
           <motion.div variants={itemVariants} className="flex justify-center mb-8">
             <Image
-              src="/logos/Full Logos/All Oatmeal Full.png"
+              src="/logos/Text Only/brown text only.png"
               alt="Caliber Peptides"
               width={56}
               height={56}

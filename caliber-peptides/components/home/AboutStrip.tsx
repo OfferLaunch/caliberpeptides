@@ -42,7 +42,7 @@ export default function AboutStrip() {
   };
 
   return (
-    <section className="bg-parchment py-16 md:py-24" id="about">
+    <section className="bg-parchment py-16 md:py-24 scroll-mt-20" id="about">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           {/* Left: Text */}

@@ -13,11 +13,21 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* Native scroll for snappier feel; smooth only when using scroll-margin for in-page links */
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-plus-jakarta-sans), sans-serif;
+  overflow-x: hidden;
+  /* Improves touch scroll responsiveness and prevents double-tap zoom delay */
+  touch-action: manipulation;
+}
+
+/* Anchor targets sit below sticky nav (nav is h-16) */
+[id] {
+  scroll-margin-top: 5rem;
 }
