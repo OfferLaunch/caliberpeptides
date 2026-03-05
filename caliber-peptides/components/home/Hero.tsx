@@ -42,9 +42,11 @@ export default function Hero() {
             <Image
               src="/logos/Text Only/brown text only.png"
               alt="Caliber Peptides"
-              width={56}
-              height={56}
+              width={336}
+              height={168}
               style={{ width: 'auto', height: '56px' }}
+              sizes="(min-width: 768px) 168px, 120px"
+              quality={95}
               priority
             />
           </motion.div>

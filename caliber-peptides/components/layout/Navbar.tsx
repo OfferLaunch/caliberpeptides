@@ -38,9 +38,11 @@ export default function Navbar() {
             <Image
               src="/logos/Full Logos/Sage + Brown Full.png"
               alt="Caliber Peptides"
-              width={40}
-              height={40}
+              width={240}
+              height={80}
               style={{ width: 'auto', height: '40px' }}
+              sizes="120px"
+              quality={95}
               priority
             />
           </Link>
