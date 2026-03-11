@@ -14,6 +14,7 @@ export default function CheckoutPage() {
   const [notes, setNotes] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [orderComplete, setOrderComplete] = useState(false);
+  const [checkoutError, setCheckoutError] = useState<string | null>(null);
 
   const subtotal = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
@@ -21,10 +22,37 @@ export default function CheckoutPage() {
     e.preventDefault();
     if (cart.length === 0) return;
     setIsSubmitting(true);
-    // Simulate order submission — replace with WooCommerce or your payment flow when ready
-    await new Promise((r) => setTimeout(r, 800));
-    setOrderComplete(true);
-    clearCart();
+    setCheckoutError(null);
+
+    const res = await fetch('/api/woocommerce/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email,
+        cart: cart.map((item) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+      }),
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    if (res.ok && data.payment_url) {
+      clearCart();
+      window.location.href = data.payment_url;
+      return;
+    }
+
+    if (res.status === 503) {
+      // WooCommerce not configured — show demo success
+      setOrderComplete(true);
+      clearCart();
+    } else {
+      setCheckoutError(data.error || 'Could not proceed to checkout. Please try again.');
+    }
     setIsSubmitting(false);
   };
 
@@ -214,8 +242,13 @@ export default function CheckoutPage() {
                   </div>
                 </div>
                 <p className="font-body text-xs text-espresso/60 mt-4">
-                  Research use only. Payment and shipping will be completed via your configured provider (e.g. WooCommerce).
+                  Research use only. Payment and shipping will be completed on our secure checkout.
                 </p>
+                {checkoutError && (
+                  <p className="mt-4 font-body text-sm text-red-600" role="alert">
+                    {checkoutError}
+                  </p>
+                )}
                 <div className="mt-6 flex flex-col gap-2">
                   <PillButton
                     type="submit"
@@ -224,7 +257,7 @@ export default function CheckoutPage() {
                     className="w-full font-bold"
                     disabled={isSubmitting}
                   >
-                    {isSubmitting ? 'Processing…' : 'Place order'}
+                    {isSubmitting ? 'Processing…' : 'Proceed to Checkout'}
                   </PillButton>
                   <Link href="/products" className="block text-center font-body text-sm text-espresso/70 hover:text-espresso transition-colors">
                     Continue shopping

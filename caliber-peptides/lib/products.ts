@@ -30,7 +30,7 @@ export interface Product {
 
 export const products: Product[] = [
   {
-    id: '1',
+    id: '218',
     name: 'Tesamorelin',
     slug: 'tesamorelin',
     category: 'GHRH',
@@ -94,7 +94,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: '2',
+    id: '13',
     name: 'Sermorelin',
     slug: 'sermorelin',
     category: 'GHRH',
@@ -157,7 +157,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: '3',
+    id: '16',
     name: 'NAD+',
     slug: 'nad-plus',
     category: 'Cellular Health',
@@ -234,7 +234,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: '4',
+    id: '225',
     name: 'GLOW',
     slug: 'glow',
     category: 'Specialty Blends',
@@ -304,7 +304,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: '5',
+    id: '214',
     name: 'Wolverine',
     slug: 'wolverine',
     category: 'Specialty Blends',
@@ -382,7 +382,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: '6',
+    id: '12',
     name: 'BPC-157',
     slug: 'bpc-157',
     category: 'BPC Peptides',
@@ -460,7 +460,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: '7',
+    id: '226',
     name: 'Epitalon',
     slug: 'epitalon',
     category: 'Longevity',
@@ -473,7 +473,7 @@ export const products: Product[] = [
     specs: '3mL vial',
   },
   {
-    id: '8',
+    id: '223',
     name: 'Copper Peptide',
     slug: 'copper-peptide',
     category: 'Specialty',
@@ -544,7 +544,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: '9',
+    id: '216',
     name: 'CJC 1295/Ipamorelin',
     slug: 'cjc1295-ipamorelin',
     category: 'GHRH',
@@ -607,7 +607,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: '10',
+    id: '18',
     name: 'GLP-3R',
     slug: 'glp-3r',
     category: 'Metabolic',
@@ -677,7 +677,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: '11',
+    id: '222',
     name: 'Bremelanotide',
     slug: 'bremelanotide',
     category: 'Specialty',
@@ -748,7 +748,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: '12',
+    id: '17',
     name: 'MOTS-C',
     slug: 'mots-c',
     category: 'Metabolic',
@@ -811,7 +811,7 @@ export const products: Product[] = [
     ],
   },
   {
-    id: '13',
+    id: '19',
     name: 'BAC Water',
     slug: 'bac-water',
     category: 'Supplies',

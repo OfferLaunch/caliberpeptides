@@ -14,18 +14,26 @@ interface AnimatedTabsProps {
   tabs?: Tab[];
   defaultTab?: string;
   className?: string;
+  /** 'row' = single row (scroll on mobile), 'grid' = 3 columns (2 rows for 6 tabs), centered */
+  tabStripLayout?: 'row' | 'grid';
 }
 
 const AnimatedTabs = ({
   tabs = [],
   defaultTab,
   className,
+  tabStripLayout = 'row',
 }: AnimatedTabsProps) => {
   const [activeTab, setActiveTab] = useState<string>(
     defaultTab ?? tabs[0]?.id ?? ''
   );
 
   if (!tabs?.length) return null;
+
+  const tabStripClass =
+    tabStripLayout === 'grid'
+      ? 'grid grid-cols-2 sm:grid-cols-3 gap-2 bg-glass/50 backdrop-blur-sm p-1.5 rounded-xl border border-glass min-w-0'
+      : 'flex gap-2 flex-nowrap overflow-x-auto overflow-y-hidden py-1 -mx-1 px-1 bg-glass/50 backdrop-blur-sm p-1.5 rounded-xl border border-glass min-w-0';
 
   return (
     <div
@@ -34,13 +42,14 @@ const AnimatedTabs = ({
         className
       )}
     >
-      <div className="flex gap-2 flex-nowrap overflow-x-auto overflow-y-hidden py-1 -mx-1 px-1 bg-glass/50 backdrop-blur-sm p-1.5 rounded-xl border border-glass min-w-0">
+      <div className={tabStripClass}>
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={cn(
-              'relative shrink-0 px-4 py-2 text-sm font-medium rounded-lg text-espresso outline-none transition-colors font-body'
+              'relative px-4 py-2 text-sm font-medium rounded-lg text-espresso outline-none transition-colors font-body',
+              tabStripLayout === 'grid' ? 'w-full' : 'shrink-0'
             )}
           >
             {activeTab === tab.id && (

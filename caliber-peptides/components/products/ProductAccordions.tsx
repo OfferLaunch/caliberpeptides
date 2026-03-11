@@ -1,10 +1,10 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronDown, Download } from 'lucide-react';
+import { ChevronDown, ExternalLink } from 'lucide-react';
 import { Product } from '@/lib/products';
-import { PillButton } from '@/components/ui/PillButton';
 
 interface ProductAccordionsProps {
   product: Product;
@@ -215,35 +215,14 @@ export default function ProductAccordions({
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
             >
-              <div className="px-6 py-6 bg-white border-t border-glass/50 space-y-4">
-                <div className="bg-parchment/50 rounded-lg p-6 border border-glass">
-                  <div className="space-y-3 divide-y divide-glass">
-                    <div className="flex justify-between font-mono text-sm">
-                      <span className="text-espresso/70">Purity:</span>
-                      <strong className="text-espresso">
-                        {product.purity}%
-                      </strong>
-                    </div>
-                    <div className="flex justify-between font-mono text-sm pt-3">
-                      <span className="text-espresso/70">Form:</span>
-                      <strong className="text-espresso">{product.form}</strong>
-                    </div>
-                    <div className="flex justify-between font-mono text-sm pt-3">
-                      <span className="text-espresso/70">Batch:</span>
-                      <strong className="text-espresso">
-                        CP-{product.id}-2024
-                      </strong>
-                    </div>
-                  </div>
-                </div>
-
-                <PillButton
-                  variant="outline"
-                  className="inline-flex items-center gap-2 w-full justify-center"
+              <div className="px-6 py-6 bg-white border-t border-glass/50">
+                <Link
+                  href={`/coa/${product.slug}`}
+                  className="inline-flex items-center justify-center gap-2 w-full rounded-full px-6 py-2.5 border border-sage/50 bg-transparent font-body font-medium text-sage hover:bg-sage/10 hover:border-sage transition-all"
                 >
-                  <Download size={18} />
-                  Download PDF
-                </PillButton>
+                  <ExternalLink size={18} />
+                  View Certificate of Analysis
+                </Link>
               </div>
             </motion.div>
           )}

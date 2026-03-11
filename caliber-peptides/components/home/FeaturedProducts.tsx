@@ -7,27 +7,30 @@ import SectionHeader from '@/components/ui/SectionHeader';
 import { products } from '@/lib/products';
 
 const ROTATE_INTERVAL_MS = 5000;
+const featured = products.filter((p) => p.slug !== 'bac-water');
+
+function buildSlides(perSlide: number) {
+  const slides: typeof featured[] = [];
+  for (let i = 0; i < featured.length; i += perSlide) {
+    slides.push(featured.slice(i, i + perSlide));
+  }
+  return slides;
+}
+
+const mobileSlides = buildSlides(2); // 2 per slide -> 6 slides for 11 products
+const desktopSlides = buildSlides(3); // 3 per slide -> 4 slides
 
 export default function FeaturedProducts() {
-  const featured = products.filter((p) => p.slug !== 'bac-water');
-  const size = 3;
-  const slides: typeof featured[] = [];
-  for (let i = 0; i < featured.length; i += size) {
-    const chunk = featured.slice(i, i + size);
-    if (chunk.length < size && featured.length >= size) {
-      chunk.push(...featured.slice(0, size - chunk.length));
-    }
-    slides.push(chunk);
-  }
-  const [page, setPage] = useState(0);
-  const currentSlide = slides[page % slides.length] ?? slides[0];
+  const [mobilePage, setMobilePage] = useState(0);
+  const [desktopPage, setDesktopPage] = useState(0);
 
   useEffect(() => {
     const t = setInterval(() => {
-      setPage((p) => (p + 1) % slides.length);
+      setMobilePage((p) => (p + 1) % mobileSlides.length);
+      setDesktopPage((p) => (p + 1) % desktopSlides.length);
     }, ROTATE_INTERVAL_MS);
     return () => clearInterval(t);
-  }, [slides.length]);
+  }, []);
 
   return (
     <section className="bg-white py-16 md:py-24">
@@ -39,38 +42,66 @@ export default function FeaturedProducts() {
           />
         </div>
 
-        <div className="relative">
+        {/* Mobile only: 2 columns, 6 slides cycling through 11 products */}
+        <div className="md:hidden relative">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
-              key={page}
+              key={mobilePage}
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -24 }}
               transition={{ duration: 0.35 }}
-              className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 w-full"
+              className="grid grid-cols-2 gap-4 w-full"
             >
-              {currentSlide.map((product) => (
+              {mobileSlides[mobilePage]?.map((product) => (
                 <ProductCatalogCard key={product.id} product={product} />
               ))}
             </motion.div>
           </AnimatePresence>
+          <div className="flex justify-center gap-2 mt-6">
+            {mobileSlides.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={() => setMobilePage(i)}
+                className={`h-2 rounded-full transition-all ${
+                  i === mobilePage ? 'w-6 bg-sage' : 'w-2 bg-sage/40 hover:bg-sage/60'
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
-        {/* Dots */}
-        <div className="flex justify-center gap-2 mt-8">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              type="button"
-              aria-label={`Go to slide ${i + 1}`}
-              onClick={() => setPage(i)}
-              className={`h-2 rounded-full transition-all ${
-                i === page % slides.length
-                  ? 'w-6 bg-sage'
-                  : 'w-2 bg-sage/40 hover:bg-sage/60'
-              }`}
-            />
-          ))}
+        {/* Desktop: 3 columns (or 2 on sm), 4 slides */}
+        <div className="hidden md:block relative">
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={desktopPage}
+              initial={{ opacity: 0, x: 24 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -24 }}
+              transition={{ duration: 0.35 }}
+              className="grid grid-cols-2 lg:grid-cols-3 gap-6 w-full"
+            >
+              {desktopSlides[desktopPage]?.map((product) => (
+                <ProductCatalogCard key={product.id} product={product} />
+              ))}
+            </motion.div>
+          </AnimatePresence>
+          <div className="flex justify-center gap-2 mt-8">
+            {desktopSlides.map((_, i) => (
+              <button
+                key={i}
+                type="button"
+                aria-label={`Go to slide ${i + 1}`}
+                onClick={() => setDesktopPage(i)}
+                className={`h-2 rounded-full transition-all ${
+                  i === desktopPage ? 'w-6 bg-sage' : 'w-2 bg-sage/40 hover:bg-sage/60'
+                }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>

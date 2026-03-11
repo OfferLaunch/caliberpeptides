@@ -9,9 +9,50 @@ import { PillButton } from '@/components/ui/PillButton';
 
 export default function CartDropdown() {
   const [isOpen, setIsOpen] = useState(false);
-  const { cart, cartCount, removeFromCart, updateQuantity } = useCart();
+  const [email, setEmail] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const { cart, cartCount, removeFromCart, updateQuantity, clearCart } = useCart();
 
   const cartTotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+
+  const handleProceedToCheckout = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (cart.length === 0 || !email.trim()) return;
+    setIsSubmitting(true);
+    setError(null);
+
+    const res = await fetch('/api/woocommerce/checkout', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email.trim(),
+        cart: cart.map((item) => ({
+          id: item.id,
+          name: item.name,
+          price: item.price,
+          quantity: item.quantity,
+        })),
+      }),
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    if (res.ok && data.payment_url) {
+      clearCart();
+      setIsOpen(false);
+      window.location.href = data.payment_url;
+      return;
+    }
+
+    if (res.status === 503) {
+      setError('Checkout not configured. Add WOOCOMMERCE_URL, WOOCOMMERCE_CONSUMER_KEY, and WOOCOMMERCE_CONSUMER_SECRET to .env.local (local) or your host’s env vars (deploy), then restart.');
+    } else {
+      const msg = data.details || data.error || 'Could not proceed. Please try again.';
+      setError(msg);
+    }
+    setIsSubmitting(false);
+  };
 
   return (
     <div className="relative">
@@ -113,11 +154,34 @@ export default function CartDropdown() {
                       </span>
                     </div>
 
-                    <Link href="/checkout" onClick={() => setIsOpen(false)} className="block mb-2">
-                      <PillButton variant="solid" size="default" className="w-full">
-                        Proceed to Checkout
+                    <form onSubmit={handleProceedToCheckout} className="space-y-3 mb-2">
+                      <label htmlFor="cart-email" className="block font-body text-sm font-medium text-espresso">
+                        Email
+                      </label>
+                      <input
+                        id="cart-email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="you@example.com"
+                        required
+                        className="w-full px-3 py-2 rounded-lg border border-glass font-body text-espresso text-sm placeholder:text-espresso/40 focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage"
+                      />
+                      {error && (
+                        <p className="font-body text-xs text-red-600" role="alert">
+                          {error}
+                        </p>
+                      )}
+                      <PillButton
+                        type="submit"
+                        variant="solid"
+                        size="default"
+                        className="w-full"
+                        disabled={isSubmitting}
+                      >
+                        {isSubmitting ? 'Taking you to checkout…' : 'Proceed to Checkout'}
                       </PillButton>
-                    </Link>
+                    </form>
 
                     <button
                       onClick={() => setIsOpen(false)}

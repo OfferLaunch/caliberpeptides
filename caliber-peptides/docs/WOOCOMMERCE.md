@@ -1,59 +1,68 @@
 # Connecting WooCommerce to This Site
 
-This Next.js app currently uses **static product data** (`lib/products.ts`) and an **in-memory cart** (no real checkout). To use WooCommerce as your backend, you have two main approaches.
+This Next.js app uses **static product data** (`lib/products.ts`) and an **in-memory cart**. Checkout is wired to WooCommerce: when you configure the env vars below, “Place order” creates a pending order on your WooCommerce store and redirects the customer to your store’s payment page (Cloudways or any WordPress host).
 
 ---
 
-## Option A: WooCommerce as backend, redirect to WordPress for checkout (recommended)
+## Easiest path: Checkout via WooCommerce (implemented)
 
-1. **Run WordPress + WooCommerce** on a URL you control (e.g. `https://store.yourdomain.com` or `https://yourdomain.com/store`).
+1. **WooCommerce on Cloudways (or any host)**  
+   Use your existing WordPress + WooCommerce install. Note the store URL (e.g. `https://shop.yourdomain.com` or your Cloudways app URL).
 
-2. **Enable the REST API** in WooCommerce (WooCommerce → Settings → Advanced → REST API). Create an API key (read for products; read/write if you ever sync cart from this site).
+2. **Create an API key in WooCommerce**  
+   - In WordPress: **WooCommerce → Settings → Advanced → REST API**.  
+   - Click **Add key**.  
+   - Description: e.g. “Caliber Peptides site”.  
+   - User: choose an admin or a user that can create orders.  
+   - Permissions: **Read/Write** (needed to create orders).  
+   - Copy the **Consumer key** and **Consumer secret**.
 
-3. **Add environment variables** in this project (e.g. in `.env.local`):
+3. **Add environment variables**  
+   In the Caliber Peptides project, create or edit `.env.local` (and add the same in your production host, e.g. Vercel):
 
    ```env
-   NEXT_PUBLIC_WOOCOMMERCE_URL=https://store.yourdomain.com
-   WOOCOMMERCE_CONSUMER_KEY=ck_xxxx
-   WOOCOMMERCE_CONSUMER_SECRET=cs_xxxx
+   WOOCOMMERCE_URL=https://your-store-url.com
+   WOOCOMMERCE_CONSUMER_KEY=ck_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+   WOOCOMMERCE_CONSUMER_SECRET=cs_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    ```
 
-   Use `NEXT_PUBLIC_` only for values that must be visible in the browser (e.g. store URL for “View cart” / “Checkout” links). Keep keys secret and use them only in server-side code or API routes.
+   - **WOOCOMMERCE_URL** — Your WooCommerce store URL (no trailing slash), e.g. your Cloudways application URL where WordPress is installed.  
+   - **WOOCOMMERCE_CONSUMER_KEY** / **WOOCOMMERCE_CONSUMER_SECRET** — From step 2.  
+   - Do **not** commit `.env.local`; keep keys secret.
 
-4. **Fetch products from WooCommerce** instead of `lib/products.ts`:
-   - **REST API:** `GET {WOO_URL}/wp-json/wc/store/v1/products` (Store API) or `GET {WOO_URL}/wp-json/wc/v3/products` (legacy, requires auth for private products).
-   - Map WooCommerce product fields to your existing `Product` type (id, name, slug, price, images, description, categories, etc.). You can keep the same UI and only swap the data source.
+4. **Product IDs must match**  
+   Cart items are sent to WooCommerce by **product ID**. The `id` in `lib/products.ts` (and in the cart) must be the **numeric WooCommerce product ID** for each product. If you use static data, set each product’s `id` to the same value as in WooCommerce (e.g. `id: '123'` for WooCommerce product 123). When you later switch to fetching products from the WooCommerce API, the IDs will already match.
 
-5. **Cart and checkout:**
-   - **Easiest:** Keep “Add to Cart” on this site as you do now (or sync to WooCommerce session if you implement it). Add a **“Cart” / “Checkout”** button that sends users to your WooCommerce cart/checkout URLs, e.g.:
-     - Cart: `https://store.yourdomain.com/cart`
-     - Checkout: `https://store.yourdomain.com/checkout`
-   - So: this site = catalog + “Add to Cart” (and optionally cart display); WordPress = cart, checkout, and payments.
+5. **What happens at checkout**  
+   - Customer fills cart on this site and goes to **Checkout**.  
+   - They enter email and click **Place order**.  
+   - The app calls `POST /api/woocommerce/checkout` with the cart and email.  
+   - The API creates a **pending** order on WooCommerce and returns the **order-pay** URL.  
+   - The customer is redirected to your WooCommerce store to complete payment (card, PayPal, etc.).  
+   - If the env vars are not set, the app shows the demo “Thank you” message instead.
 
-6. **CORS:** If you call the WooCommerce API from the browser, your WordPress site must allow your Next.js origin in CORS (e.g. via plugin or server config). Prefer calling WooCommerce from **Next.js API routes** or **server components** so the request is server-to-server and you avoid CORS and exposing keys.
-
----
-
-## Option B: Full headless (cart and checkout on this site via API)
-
-- Use WooCommerce **REST API** or **Store API** to:
-  - List products (as in Option A).
-  - Create cart, add items, and get checkout URL or session.
-- Implement “Checkout” on this site by either:
-  - Redirecting to WooCommerce checkout with cart items (e.g. via URL params or a server-created session), or
-  - Using a headless WooCommerce / payment plugin that exposes checkout over API.
-- This requires more backend work (API routes, possibly WordPress plugins) and possibly handling payments through WooCommerce’s payment gateways in a headless way.
+**Cloudways:** Use your Cloudways WordPress site URL as `WOOCOMMERCE_URL` (e.g. the temporary URL or your custom domain pointing to that server). Ensure the site is on HTTPS in production. No extra Cloudways config is needed for the REST API.
 
 ---
 
-## Practical next steps for Option A
+## Option A (alternative): Redirect to cart/checkout without creating an order here
 
-1. **Install and configure WooCommerce** on WordPress; add your products (or migrate from `lib/products.ts` manually/with a script).
-2. **Create a WooCommerce API key** (WooCommerce → Settings → Advanced → REST API) with at least read access.
-3. **Add the env vars** above to `.env.local` (and to Vercel/hosting env for production).
-4. **Create a data layer** in this repo that fetches from WooCommerce:
-   - e.g. `lib/woocommerce.ts` or `lib/api/products.ts` that calls `NEXT_PUBLIC_WOOCOMMERCE_URL` (or `WOOCOMMERCE_URL`) and, if needed, `WOOCOMMERCE_CONSUMER_KEY` / `WOOCOMMERCE_CONSUMER_SECRET` from the server.
-5. **Replace usage of `lib/products.ts`** with this new data layer (products list, product by slug, categories).
-6. **Add “Cart” and “Checkout” links** in the navbar/footer that point to your WooCommerce cart and checkout URLs. Optionally, pass cart items (e.g. product ID + quantity) to the WooCommerce cart URL if you use a plugin or custom endpoint that accepts them.
+You can instead link users to your WooCommerce cart or checkout and let them add products there. That approach does not use the API route above. Steps:
 
-If you tell me whether you prefer Option A (redirect to WooCommerce for checkout) or Option B (more headless), I can outline the exact files to add or change next (e.g. `lib/woocommerce.ts`, API routes, and navbar links).
+1. **Run WordPress + WooCommerce** on a URL you control (e.g. your Cloudways URL).
+
+2. **Enable the REST API** and create an API key (WooCommerce → Settings → Advanced → REST API) — at least Read if you later fetch products; Read/Write if you create orders from this site.
+
+3. **Env vars** (for the implemented checkout flow we use `WOOCOMMERCE_URL` and the two keys; no `NEXT_PUBLIC_` needed for checkout).
+
+4. **Fetch products from WooCommerce** (optional): replace `lib/products.ts` with a data layer that calls `GET {WOO_URL}/wp-json/wc/store/v1/products` or `GET {WOO_URL}/wp-json/wc/v3/products` and map to your `Product` type.
+
+5. **Cart/checkout links:** point “Cart” / “Checkout” in the navbar to `https://your-store.com/cart` and `https://your-store.com/checkout` if you prefer that flow instead of the in-app checkout above.
+
+6. **CORS:** All WooCommerce API calls from this site are made in **Next.js API routes** (server-side), so you don’t need to configure CORS on WordPress.
+
+---
+
+## Option B: Full headless (future)
+
+- Use WooCommerce **REST API** or **Store API** to list products and optionally manage cart/checkout fully on this site. This requires more backend work and possibly WordPress plugins for headless payments.

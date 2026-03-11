@@ -6,7 +6,6 @@ import { motion } from 'framer-motion';
 import { AnimatedTabs, type Tab } from '@/components/ui/animated-tabs';
 import { ArrowRight } from 'lucide-react';
 
-// Add a photo for each category by placing PNGs in public/images/categories/ (5×4 format)
 const categoryCards = [
   { id: 'ghrp', name: 'GHRP', description: 'Growth hormone releasing peptides', image: '/images/categories/ghrp.png' },
   { id: 'bpc', name: 'BPC Peptides', description: 'Body protection compounds', image: '/images/categories/bpc.png' },
@@ -25,7 +24,7 @@ const gradientsByCategory: Record<string, string> = {
   specialty: 'bg-gradient-to-br from-sage/30 to-glass/40',
 };
 
-const CategoryTabContent = ({ card }: { card: (typeof categoryCards)[0] }) => {
+function CategoryTabContent({ card }: { card: (typeof categoryCards)[0] }) {
   const gradientClass = gradientsByCategory[card.id] ?? 'bg-gradient-to-br from-sage/30 to-glass/40';
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full min-w-0">
@@ -59,7 +58,7 @@ const CategoryTabContent = ({ card }: { card: (typeof categoryCards)[0] }) => {
       </div>
     </div>
   );
-};
+}
 
 const tabs: Tab[] = categoryCards.map((card) => ({
   id: card.id,
@@ -86,7 +85,10 @@ export default function CategoryGrid() {
           </h2>
         </motion.div>
 
-        <AnimatedTabs tabs={tabs} defaultTab={tabs[0]?.id} />
+        {/* Tabs in 3+3 grid, centered, not full width */}
+        <div className="max-w-5xl mx-auto">
+          <AnimatedTabs tabs={tabs} defaultTab={tabs[0]?.id} tabStripLayout="grid" />
+        </div>
       </div>
     </section>
   );
