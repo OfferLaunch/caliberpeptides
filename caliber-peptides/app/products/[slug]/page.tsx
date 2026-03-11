@@ -83,8 +83,8 @@ export default function ProductDetailPage() {
       <Navbar />
       <div className="min-h-screen bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-          {/* Mobile-only disclaimer */}
-          <p className="lg:hidden font-body text-sm text-espresso/80 mb-6 py-3 px-4 rounded-lg bg-parchment/60 border border-glass">
+          {/* Mobile-only disclaimer - IBM font */}
+          <p className="lg:hidden font-mono text-sm text-espresso/80 mb-6 py-3 px-4 rounded-lg bg-parchment/60 border-2 border-sage">
             Research Use Only: All products currently listed on this site are for research purposes ONLY.
           </p>
 
@@ -107,7 +107,7 @@ export default function ProductDetailPage() {
           {/* Hero Section - 2 Column Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 mb-16">
             {/* Left: Image Card */}
-            <div className="flex items-center justify-center">
+            <div className="flex flex-col items-center">
               <div className="w-full rounded-3xl bg-white shadow-sm border border-glass/60 p-6 aspect-square flex items-center justify-center">
                 <Image
                   src={product.image}
@@ -118,6 +118,15 @@ export default function ProductDetailPage() {
                   priority
                 />
               </div>
+              <p className="font-body text-sm text-espresso/80 mt-4 text-center">
+                Questions about {product.name}?
+              </p>
+              <a
+                href="tel:+12896683723"
+                className="font-mono text-sm font-semibold text-sage hover:text-sage/80 transition-colors mt-1"
+              >
+                Text Us At: +1 289 668 3723
+              </a>
             </div>
 
             {/* Right: Product Info & Purchase */}
@@ -173,6 +182,11 @@ export default function ProductDetailPage() {
                   {added ? '✓ Added to Cart' : 'Add to Cart'}
                 </PillButton>
               </div>
+
+              {/* Desktop: Research Use Only under Add to Cart - IBM font, sage outline */}
+              <p className="hidden lg:block font-mono text-xs text-espresso/70 mb-8 py-3 px-4 rounded-lg border-2 border-sage bg-parchment/30">
+                Research Use Only: All products currently listed on this site are for research purposes ONLY.
+              </p>
 
               {/* Trust Badges */}
               <ProductTrustBadges />

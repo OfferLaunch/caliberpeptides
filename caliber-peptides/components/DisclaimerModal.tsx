@@ -56,55 +56,58 @@ export default function DisclaimerModal() {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.4 }}
-            className="max-w-lg rounded-2xl bg-white p-8 shadow-2xl"
+            className="max-w-lg max-h-[90vh] w-full rounded-2xl bg-white shadow-2xl flex flex-col overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            {/* Logo */}
-            <div className="flex justify-center mb-6">
-              <Image
-                src="/logos/Text Only/brown text only.png"
-                alt="Caliber Peptides"
-                width={224}
-                height={112}
-                style={{ width: 'auto', height: '40px' }}
-                quality={95}
-              />
+            <div className="p-6 sm:p-8 flex-shrink-0">
+              {/* Logo */}
+              <div className="flex justify-center mb-4 sm:mb-6">
+                <Image
+                  src="/logos/Text Only/brown text only.png"
+                  alt="Caliber Peptides"
+                  width={224}
+                  height={112}
+                  style={{ width: 'auto', height: '40px' }}
+                  quality={95}
+                />
+              </div>
+
+              {/* Header */}
+              <h2 id="disclaimer-title" className="font-display text-xl sm:text-2xl text-espresso text-center mb-4 sm:mb-6">
+                Research Use Only
+              </h2>
+
+              {/* Divider */}
+              <div className="w-full h-px bg-glass" />
             </div>
 
-            {/* Header */}
-            <h2 id="disclaimer-title" className="font-display text-2xl text-espresso text-center mb-6">
-              Research Use Only
-            </h2>
-
-            {/* Divider */}
-            <div className="w-full h-px bg-glass mb-6" />
-
-            {/* Body Text */}
-            <div className="font-body text-sm text-espresso/80 leading-relaxed space-y-4 mb-6">
-              <p>
-                All products offered by Caliber Peptides are intended for research purposes only and are not approved by the FDA for clinical, therapeutic, or personal use. By accessing this website and placing an order, you represent and warrant that:
-              </p>
-              <ul className="list-disc list-inside space-y-2 text-espresso/70">
-                <li>You are purchasing these products for legitimate research purposes only</li>
-                <li>You understand these compounds are not for human or animal consumption</li>
-                <li>You are affiliated with a recognized research institution, laboratory, or educational organization, or are a qualified independent researcher</li>
-                <li>You comply with all applicable local, state, and federal laws governing the purchase and use of these materials</li>
-              </ul>
-              <p>
-                Caliber Peptides reserves the right to verify your eligibility and may request documentation of your research affiliation. By clicking "I Agree" below, you acknowledge that you have read and understood this disclaimer and accept full responsibility for the lawful use of these products.
-              </p>
+            {/* Body Text - scrollable so button stays in frame */}
+            <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-6 sm:px-8">
+              <div className="font-body text-sm text-espresso/80 leading-relaxed space-y-4 pb-4">
+                <p>
+                  All products offered by Caliber Peptides are intended for research purposes only and are not approved by the FDA for clinical, therapeutic, or personal use. By accessing this website and placing an order, you represent and warrant that:
+                </p>
+                <ul className="list-disc list-inside space-y-2 text-espresso/70">
+                  <li>You are purchasing these products for legitimate research purposes only</li>
+                  <li>You understand these compounds are not for human or animal consumption</li>
+                  <li>You are affiliated with a recognized research institution, laboratory, or educational organization, or are a qualified independent researcher</li>
+                  <li>You comply with all applicable local, state, and federal laws governing the purchase and use of these materials</li>
+                </ul>
+                <p>
+                  Caliber Peptides reserves the right to verify your eligibility and may request documentation of your research affiliation. By clicking "I Agree" below, you acknowledge that you have read and understood this disclaimer and accept full responsibility for the lawful use of these products.
+                </p>
+              </div>
             </div>
 
-            {/* Divider */}
-            <div className="w-full h-px bg-glass mb-6" />
-
-            {/* Button */}
-            <button
-              onClick={handleAgree}
-              className="w-full bg-sage text-white rounded-lg py-3 font-body font-semibold hover:bg-sage/90 transition-colors"
-            >
-              I Agree
-            </button>
+            {/* Button - always visible at bottom */}
+            <div className="flex-shrink-0 p-6 sm:p-8 pt-4 border-t border-glass">
+              <button
+                onClick={handleAgree}
+                className="w-full bg-sage text-white rounded-lg py-3 font-body font-semibold hover:bg-sage/90 transition-colors"
+              >
+                I Agree
+              </button>
+            </div>
           </motion.div>
         </motion.div>
       )}

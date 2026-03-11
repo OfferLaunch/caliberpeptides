@@ -28,9 +28,9 @@ const gradientsByCategory: Record<string, string> = {
 const CategoryTabContent = ({ card }: { card: (typeof categoryCards)[0] }) => {
   const gradientClass = gradientsByCategory[card.id] ?? 'bg-gradient-to-br from-sage/30 to-glass/40';
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full">
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full min-w-0">
       <div
-        className={`relative rounded-lg w-full aspect-[5/4] border border-glass shadow-sm overflow-hidden flex items-center justify-center ${gradientClass}`}
+        className={`relative rounded-lg w-full min-w-0 aspect-[5/4] border border-glass shadow-sm overflow-hidden flex items-center justify-center ${gradientClass}`}
       >
         {card.image && (
           <Image
@@ -42,11 +42,11 @@ const CategoryTabContent = ({ card }: { card: (typeof categoryCards)[0] }) => {
           />
         )}
       </div>
-      <div className="flex flex-col gap-4 justify-center">
-        <h2 className="font-display text-3xl font-normal text-espresso">
+      <div className="flex flex-col gap-4 justify-center min-w-0">
+        <h2 className="font-display text-2xl sm:text-3xl font-normal text-espresso break-words">
           {card.name}
         </h2>
-        <p className="font-body text-lg text-espresso/80 leading-relaxed">
+        <p className="font-body text-base sm:text-lg text-espresso/80 leading-relaxed break-words">
           {card.description}
         </p>
         <Link
@@ -69,8 +69,8 @@ const tabs: Tab[] = categoryCards.map((card) => ({
 
 export default function CategoryGrid() {
   return (
-    <section className="bg-[#F5F2ED] py-16 md:py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-[#F5F2ED] py-16 md:py-24 overflow-x-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-w-0">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

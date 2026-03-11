@@ -30,11 +30,11 @@ const AnimatedTabs = ({
   return (
     <div
       className={cn(
-        'w-fit mx-auto flex flex-col gap-y-3',
+        'w-full max-w-full min-w-0 flex flex-col gap-y-3',
         className
       )}
     >
-      <div className="flex gap-2 flex-nowrap bg-glass/50 backdrop-blur-sm p-1.5 rounded-xl border border-glass">
+      <div className="flex gap-2 flex-nowrap overflow-x-auto overflow-y-hidden py-1 -mx-1 px-1 bg-glass/50 backdrop-blur-sm p-1.5 rounded-xl border border-glass min-w-0">
         {tabs.map((tab) => (
           <button
             key={tab.id}
@@ -55,7 +55,7 @@ const AnimatedTabs = ({
         ))}
       </div>
 
-      <div className="w-full min-w-0 p-4 md:p-6 bg-white/80 border border-glass shadow-sm rounded-xl min-h-[280px] overflow-hidden">
+      <div className="w-full min-w-0 p-4 md:p-6 bg-white/80 border border-glass shadow-sm rounded-xl min-h-[280px] overflow-hidden overflow-x-hidden">
         {tabs.map(
           (tab) =>
             activeTab === tab.id && (
