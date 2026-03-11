@@ -10,7 +10,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { Facebook, Instagram, Linkedin, Send, Twitter } from "lucide-react"
+import { Facebook, Instagram, Send } from "lucide-react"
 import Link from "next/link"
 
 function FooterSection() {
@@ -119,7 +119,7 @@ function FooterSection() {
                       asChild
                     >
                       <a
-                        href="https://facebook.com/caliberpeptides"
+                        href="https://www.facebook.com/caliberpeptides/"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -144,32 +144,7 @@ function FooterSection() {
                       asChild
                     >
                       <a
-                        href="https://twitter.com/caliberpeptides"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Twitter className="h-4 w-4" />
-                        <span className="sr-only">Twitter</span>
-                      </a>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Follow us on Twitter</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full border-white/30 text-white hover:bg-sage/20"
-                      asChild
-                    >
-                      <a
-                        href="https://instagram.com/caliberpeptides"
+                        href="https://www.instagram.com/caliberpeptides"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
@@ -180,31 +155,6 @@ function FooterSection() {
                   </TooltipTrigger>
                   <TooltipContent>
                     <p>Follow us on Instagram</p>
-                  </TooltipContent>
-                </Tooltip>
-              </TooltipProvider>
-
-              <TooltipProvider>
-                <Tooltip>
-                  <TooltipTrigger asChild>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="rounded-full border-white/30 text-white hover:bg-sage/20"
-                      asChild
-                    >
-                      <a
-                        href="https://linkedin.com/company/caliberpeptides"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <Linkedin className="h-4 w-4" />
-                        <span className="sr-only">LinkedIn</span>
-                      </a>
-                    </Button>
-                  </TooltipTrigger>
-                  <TooltipContent>
-                    <p>Connect with us on LinkedIn</p>
                   </TooltipContent>
                 </Tooltip>
               </TooltipProvider>

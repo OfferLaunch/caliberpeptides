@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { useParams } from 'next/navigation';
@@ -24,6 +24,7 @@ export default function ProductDetailPage() {
   // State
   const [quantity, setQuantity] = useState(1);
   const [added, setAdded] = useState(false);
+  const [relatedIndex, setRelatedIndex] = useState(0);
 
   if (!product) {
     return (
@@ -51,6 +52,20 @@ export default function ProductDetailPage() {
   const others = products.filter((p) => p.id !== product.id && !sameCategory.some((s) => s.id === p.id));
   const relatedProducts = [...sameCategory, ...others].slice(0, 3);
 
+  // Reset related carousel when product changes
+  useEffect(() => {
+    setRelatedIndex(0);
+  }, [slug]);
+
+  // Mobile related products: auto-advance every 5s
+  useEffect(() => {
+    if (relatedProducts.length <= 1) return;
+    const id = setInterval(() => {
+      setRelatedIndex((i) => (i + 1) % relatedProducts.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [slug, relatedProducts.length]);
+
   const handleAddToCart = () => {
     addToCart({
       id: product.id,
@@ -68,6 +83,11 @@ export default function ProductDetailPage() {
       <Navbar />
       <div className="min-h-screen bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {/* Mobile-only disclaimer */}
+          <p className="lg:hidden font-body text-sm text-espresso/80 mb-6 py-3 px-4 rounded-lg bg-parchment/60 border border-glass">
+            Research Use Only: All products currently listed on this site are for research purposes ONLY.
+          </p>
+
           {/* Breadcrumb */}
           <div className="flex items-center gap-2 text-sm text-espresso/70 mb-8">
             <Link href="/products" className="hover:text-espresso transition-colors">
@@ -125,14 +145,17 @@ export default function ProductDetailPage() {
                 </span>
               </div>
 
-              {/* Spec Pill */}
-              {product.specs && (
-                <div className="mb-8 inline-flex">
-                  <span className="font-mono text-xs uppercase tracking-widest text-sage bg-parchment px-3 py-2 rounded-full">
-                    {product.specs}
+              {/* Vial size: MG value + Single Vial (IBM bold, sage outline) */}
+              <div className="mb-8 flex flex-wrap items-center gap-3">
+                {product.vialMg && (
+                  <span className="font-body text-lg font-semibold text-espresso">
+                    {product.vialMg}
                   </span>
-                </div>
-              )}
+                )}
+                <span className="font-mono font-bold text-espresso border-2 border-sage rounded-full px-4 py-2 inline-block">
+                  Single Vial
+                </span>
+              </div>
 
               {/* Quantity Selector & Add to Cart */}
               <div className="flex items-center gap-4 mb-8">
@@ -161,12 +184,36 @@ export default function ProductDetailPage() {
             <ProductAccordions product={product} />
           </div>
 
-          {/* Related Products - always 3, same look as catalog */}
+          {/* Related Products - mobile: 1 card, auto-rotate every 5s; desktop: 3-column grid */}
           <div className="max-w-7xl mx-auto px-0 sm:px-0 lg:px-0">
             <h2 className="font-display text-3xl font-normal text-espresso mb-8">
               Related Products
             </h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Mobile: single card carousel with 5s interval */}
+            <div className="lg:hidden overflow-hidden">
+              {relatedProducts.length > 0 && (
+                <div className="relative">
+                  <ProductCatalogCard product={relatedProducts[relatedIndex]} />
+                  {relatedProducts.length > 1 && (
+                    <div className="flex justify-center gap-2 mt-4">
+                      {relatedProducts.map((_, i) => (
+                        <button
+                          key={i}
+                          type="button"
+                          aria-label={`View related product ${i + 1}`}
+                          onClick={() => setRelatedIndex(i)}
+                          className={`h-2 rounded-full transition-all ${
+                            i === relatedIndex ? 'w-6 bg-sage' : 'w-2 bg-sage/40'
+                          }`}
+                        />
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+            {/* Desktop: 3-column grid */}
+            <div className="hidden lg:grid grid-cols-3 gap-6">
               {relatedProducts.map((p) => (
                 <ProductCatalogCard key={p.id} product={p} />
               ))}

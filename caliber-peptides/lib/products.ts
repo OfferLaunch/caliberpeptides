@@ -10,6 +10,8 @@ export interface Product {
   form: string;
   image: string;
   description: string;
+  /** Display as vial size on product page (e.g. "5 mg", "750 mg"). Shown with "single Vial". */
+  vialMg?: string;
   specs?: string;
   overview?: string;
   researchEffects?: string[];
@@ -38,6 +40,7 @@ export const products: Product[] = [
     form: 'Lyophilized Powder',
     image: '/images/tesamorelin.jpg',
     description: 'Growth hormone-releasing hormone analog.',
+    vialMg: '10 mg',
     specs: '3mL vial',
     overview: 'Tesamorelin works by triggering the body\'s own growth hormone production at the source, rather than introducing growth hormone from the outside. It does this through a key structural modification that makes it far more resistant to enzymatic breakdown than the body\'s natural signal, resulting in a stronger and more sustained response.',
     researchEffects: [
@@ -99,8 +102,9 @@ export const products: Product[] = [
     purity: 99.1,
     price: 54.99,
     form: 'Lyophilized Powder',
-    image: '/images/sermorelin.jpg',
+    image: '/images/catalog/sermorelin.png',
     description: 'GHRH (1-29) analog for growth hormone research.',
+    vialMg: '5 mg',
     specs: '3mL vial',
     overview: 'Sermorelin is a synthetic peptide made up of the first 29 amino acids that bind to GHRH receptors, triggering the body\'s own release of growth hormone. Studies suggest that since subjects\' natural feedback systems remain intact, this peptide may be a more natural way to increase growth hormone versus direct administration.',
     researchEffects: [
@@ -162,6 +166,7 @@ export const products: Product[] = [
     form: 'Lyophilized Powder',
     image: '/images/nad-plus.jpg',
     description: 'Coenzyme for energy metabolism and cellular aging research.',
+    vialMg: '500 mg',
     specs: '750mg',
     overview: 'NAD+ is a coenzyme present in every living cell that plays a central role in energy metabolism, DNA repair, and the regulation of proteins involved in cellular aging. Research indicates that NAD+ levels decline by approximately half between youth and middle age, and that restoring those levels through direct supplementation or precursor administration is theorized to support mitochondrial function, stem cell activity, and systemic metabolic health.',
     researchEffects: [
@@ -239,6 +244,7 @@ export const products: Product[] = [
     form: 'Lyophilized Powder',
     image: '/images/glow.jpg',
     description: 'Three-compound blend for tissue repair and regeneration research.',
+    vialMg: '70 mg',
     specs: '70mg - BPC157 10mg + TB-500 10mg + GHK-Cu 50mg',
     overview: 'GLOW is a three-compound blend of BPC-157, TB-500, and GHK-Cu. Each compound is theorized to have positive effects on tissue repair, collagen remodeling, and cellular regeneration. It is suggested that when combined, they address the repair process more effectively and holistically, resulting in major interest from researchers.',
     researchEffects: [
@@ -308,6 +314,7 @@ export const products: Product[] = [
     form: 'Lyophilized Powder',
     image: '/images/wolverine.jpg',
     description: 'Recovery-focused peptide blend for research.',
+    vialMg: '10 mg',
     specs: '3mL vial',
   },
   {
@@ -320,6 +327,7 @@ export const products: Product[] = [
     form: 'Lyophilized Powder',
     image: '/images/bpc157.jpg',
     description: 'Body Protection Compound for research applications.',
+    vialMg: '10 mg',
     specs: '3mL vial',
   },
   {
@@ -332,18 +340,21 @@ export const products: Product[] = [
     form: 'Lyophilized Powder',
     image: '/images/epitalon.jpg',
     description: 'Tetrapeptide for longevity and telomere research.',
+    vialMg: '10 mg',
     specs: '3mL vial',
   },
   {
     id: '8',
-    name: 'GHK-Cu',
+    name: 'Copper Peptide',
     slug: 'copper-peptide',
     category: 'Specialty',
+    catalogSubtitle: 'GHK-Cu',
     purity: 99.2,
     price: 49.99,
     form: 'Lyophilized Powder',
     image: '/images/copper-peptide.jpg',
     description: 'Copper-binding tripeptide for tissue repair and skin regeneration research.',
+    vialMg: '100 mg',
     specs: '3mL vial',
     overview: 'GHK-Cu is a naturally occurring copper-binding tripeptide found in plasma, saliva, and urine that declines significantly with age. Research suggests it supports tissue repair and skin regeneration by activating fibroblast activity, stimulating collagen and elastin synthesis, and modulating a broad range of gene expression pathways involved in healing and cellular maintenance.',
     researchEffects: [
@@ -413,6 +424,7 @@ export const products: Product[] = [
     form: 'Lyophilized Powder',
     image: '/images/cjc1295-ipamorelin.jpg',
     description: 'CJC 1295 (No DAC) and Ipamorelin combination blend.',
+    vialMg: '5 mg/5 mg',
     specs: '3mL vial',
     overview: 'CJC-1295 No DAC + Ipamorelin is a two-compound blend studied for its ability to stimulate growth hormone release through two separate biological pathways simultaneously. Research shows each compound mimics a different natural signal, producing a more complete growth hormone stimulus when combined, released in natural pulses and without meaningfully raising cortisol or other stress hormones.',
     researchEffects: [
@@ -475,6 +487,7 @@ export const products: Product[] = [
     form: 'Lyophilized Powder',
     image: '/images/glp-3r.jpg',
     description: 'GLP receptor agonist for metabolic research.',
+    vialMg: '10 mg',
     specs: '3mL vial',
     overview: 'GLP-3R is an investigational peptide studied for its simultaneous activity on GLP-1, GIP, and glucagon receptors, the three primary drivers of metabolic regulation. Research explores how each receptor contributes a distinct effect: appetite reduction and improved insulin response, enhanced insulin efficiency, and increased resting metabolic rate.',
     researchEffects: [
@@ -545,6 +558,7 @@ export const products: Product[] = [
     form: 'Lyophilized Powder',
     image: '/images/bremelanotide.jpg',
     description: 'Melanocortin analog for research (PT-141).',
+    vialMg: '10 mg',
     specs: '3mL vial',
     overview: 'PT-141 is a synthetic peptide studied for its activity on melanocortin receptors in the brain, which are directly involved in regulating sexual motivation and desire. Rather than increasing blood flow to genital tissue like most compounds in this category, it initiates the arousal signal at its source, upstream in the central nervous system.',
     researchEffects: [
@@ -614,6 +628,7 @@ export const products: Product[] = [
     form: 'Lyophilized Powder',
     image: '/images/mots-c.jpg',
     description: 'Mitochondrial-derived peptide and exercise mimetic for metabolic research.',
+    vialMg: '10 mg',
     specs: '10mg',
     overview: 'MOTS-c is a 16-amino-acid peptide encoded within the mitochondrial genome that functions as a cellular energy sensor and metabolic regulator. Research suggests it activates the AMPK pathway in skeletal muscle, promoting glucose uptake, insulin sensitivity, and mitochondrial function, and is theorized to act as an exercise mimetic by replicating key molecular signals that exercise generates endogenously.',
     researchEffects: [
@@ -677,6 +692,7 @@ export const products: Product[] = [
     form: 'Solution',
     image: '/images/bac-water.jpg',
     description: 'Bacteriostatic water for peptide reconstitution.',
+    vialMg: '30 mL',
     specs: '30mL vial',
   },
 ];

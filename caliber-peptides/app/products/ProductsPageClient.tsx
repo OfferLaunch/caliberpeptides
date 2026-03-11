@@ -6,7 +6,7 @@ import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ProductSidebar from '@/components/products/ProductSidebar';
 import ProductCatalogCard from '@/components/products/ProductCatalogCard';
-import { products, categories } from '@/lib/products';
+import { products, categories, searchProducts } from '@/lib/products';
 
 export default function ProductsPageClient() {
   const router = useRouter();
@@ -16,6 +16,7 @@ export default function ProductsPageClient() {
 
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+  const [mobileSearch, setMobileSearch] = useState('');
 
   // Sync state from URL on load and when URL changes (e.g. from nav dropdown)
   useEffect(() => {
@@ -67,12 +68,17 @@ export default function ProductsPageClient() {
     [updateUrl]
   );
 
-  // When a specific product is selected, show only that product; otherwise filter by category
-  const displayedProducts = selectedProduct
+  // Desktop: sidebar/URL filtering
+  const displayedProductsDesktop = selectedProduct
     ? products.filter((p) => p.slug === selectedProduct)
     : selectedCategory
       ? products.filter((p) => p.category === selectedCategory)
       : products;
+
+  // Mobile: search by product name or type (category)
+  const displayedProductsMobile = mobileSearch.trim()
+    ? searchProducts(mobileSearch)
+    : products;
 
   return (
     <>
@@ -80,7 +86,7 @@ export default function ProductsPageClient() {
       <div className="min-h-screen bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
           {/* Header */}
-          <div className="mb-12">
+          <div className="mb-8 lg:mb-12">
             <span className="font-mono text-xs uppercase tracking-widest text-sage block mb-2">
               Research Products
             </span>
@@ -92,10 +98,21 @@ export default function ProductsPageClient() {
             </p>
           </div>
 
-          {/* Main Layout: Sidebar + Grid */}
-          <div className="flex flex-col lg:flex-row gap-8">
-            {/* Left Sidebar - Desktop */}
-            <div className="hidden lg:block flex-shrink-0">
+          {/* Mobile: search bar only (no sidebar list) */}
+          <div className="lg:hidden mb-6">
+            <input
+              type="text"
+              value={mobileSearch}
+              onChange={(e) => setMobileSearch(e.target.value)}
+              placeholder="Search by product name or type"
+              className="w-full px-4 py-3 rounded-lg border border-glass font-body text-espresso placeholder:text-espresso/50 focus:outline-none focus:ring-2 focus:ring-sage/50 focus:border-sage"
+              aria-label="Search by product name or type"
+            />
+          </div>
+
+          {/* Desktop: Main Layout Sidebar + Grid */}
+          <div className="hidden lg:flex flex-col lg:flex-row gap-8">
+            <div className="flex-shrink-0">
               <div className="sticky top-24 w-64 border border-glass rounded-lg overflow-hidden">
                 <ProductSidebar
                   selectedCategory={selectedCategory}
@@ -105,27 +122,13 @@ export default function ProductsPageClient() {
                 />
               </div>
             </div>
-
-            {/* Right Content - Products Grid */}
             <div className="flex-1 min-w-0">
-              {/* Mobile Sidebar */}
-              <div className="lg:hidden mb-8 border border-glass rounded-lg overflow-hidden">
-                <ProductSidebar
-                  selectedCategory={selectedCategory}
-                  selectedProduct={selectedProduct}
-                  onCategorySelect={handleCategorySelect}
-                  onProductSelect={handleProductSelect}
-                />
-              </div>
-
-              {/* Product Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                {displayedProducts.map((product) => (
+              <div className="grid grid-cols-3 gap-6">
+                {displayedProductsDesktop.map((product) => (
                   <ProductCatalogCard key={product.id} product={product} />
                 ))}
               </div>
-
-              {displayedProducts.length === 0 && (
+              {displayedProductsDesktop.length === 0 && (
                 <div className="text-center py-12">
                   <p className="font-body text-lg text-espresso/70">
                     No products found in this category.
@@ -133,6 +136,22 @@ export default function ProductsPageClient() {
                 </div>
               )}
             </div>
+          </div>
+
+          {/* Mobile: 2-column grid only */}
+          <div className="lg:hidden">
+            <div className="grid grid-cols-2 gap-4">
+              {displayedProductsMobile.map((product) => (
+                <ProductCatalogCard key={product.id} product={product} />
+              ))}
+            </div>
+            {displayedProductsMobile.length === 0 && (
+              <div className="text-center py-12">
+                <p className="font-body text-lg text-espresso/70">
+                  No products match your search.
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>
