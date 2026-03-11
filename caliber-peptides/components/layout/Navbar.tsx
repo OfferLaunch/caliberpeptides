@@ -4,7 +4,8 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Menu, X } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+import { Menu, X, Search } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import {
@@ -17,6 +18,8 @@ import {
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
 import { categories } from '@/lib/products';
+import ProductSearch from '@/components/ProductSearch';
+import CartDropdown from '@/components/cart/CartDropdown';
 
 const productLinks = categories.map((cat) => ({
   title: cat,
@@ -52,8 +55,20 @@ const NavListItem = React.forwardRef<
 NavListItem.displayName = 'NavListItem';
 
 export default function Navbar() {
+  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    const q = searchQuery.trim();
+    if (q) {
+      router.push(`/search?q=${encodeURIComponent(q)}`);
+      setSearchQuery('');
+      setIsOpen(false);
+    }
+  }
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 10);
@@ -62,8 +77,8 @@ export default function Navbar() {
   }, []);
 
   const mobileNavLinks = [
+    { label: 'Home', href: '/' },
     { label: 'Products', href: '/products' },
-    { label: 'Blog', href: '/blog' },
     { label: 'COA', href: '/coa' },
     { label: 'About', href: '/#about' },
   ];
@@ -71,7 +86,7 @@ export default function Navbar() {
   return (
     <nav
       className={cn(
-        'sticky top-0 z-50 transition-all duration-300 bg-parchment border-b',
+        'sticky top-0 z-50 transition-all duration-300 bg-white border-b',
         isScrolled ? 'shadow-lg border-glass' : 'border-glass/50'
       )}
     >
@@ -94,6 +109,19 @@ export default function Navbar() {
           <div className="hidden md:flex items-center gap-2">
             <NavigationMenu>
               <NavigationMenuList className="gap-1">
+                <NavigationMenuItem>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href="/"
+                      className={cn(
+                        navigationMenuTriggerStyle(),
+                        'font-body text-espresso'
+                      )}
+                    >
+                      Home
+                    </Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
                 <NavigationMenuItem>
                   <NavigationMenuTrigger className="font-body text-espresso bg-transparent hover:bg-glass/50 hover:text-sage">
                     Products
@@ -128,46 +156,38 @@ export default function Navbar() {
                   </NavigationMenuContent>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/blog" legacyBehavior passHref>
-                    <NavigationMenuLink
-                      className={cn(
-                        navigationMenuTriggerStyle(),
-                        'font-body text-espresso'
-                      )}
-                    >
-                      Blog
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem>
-                <NavigationMenuItem>
-                  <Link href="/coa" legacyBehavior passHref>
-                    <NavigationMenuLink
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href="/coa"
                       className={cn(
                         navigationMenuTriggerStyle(),
                         'font-body text-espresso'
                       )}
                     >
                       COA
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
                 <NavigationMenuItem>
-                  <Link href="/#about" legacyBehavior passHref>
-                    <NavigationMenuLink
+                  <NavigationMenuLink asChild>
+                    <Link
+                      href="/#about"
                       className={cn(
                         navigationMenuTriggerStyle(),
                         'font-body text-espresso'
                       )}
                     >
                       About
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>
+            <ProductSearch />
+            <CartDropdown />
             <Link
               href="/products"
-              className="bg-sage text-white px-4 py-2 rounded-lg font-body text-sm font-medium hover:bg-sage/90 transition-all hover:scale-105 shrink-0"
+              className="inline-flex items-center justify-center rounded-full bg-sage text-white px-6 py-2 font-body text-sm font-bold hover:bg-sage/90 transition-all hover:scale-105 shrink-0 border border-sage"
             >
               Shop Now
             </Link>
@@ -183,7 +203,6 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-
       {/* Mobile menu */}
       <AnimatePresence>
         {isOpen && (
@@ -191,9 +210,20 @@ export default function Navbar() {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-parchment border-t border-glass"
+            className="md:hidden bg-white border-t border-glass"
           >
             <div className="px-4 py-4 space-y-4">
+              <form onSubmit={handleSearch} className="flex items-center gap-2 rounded-lg border border-glass bg-white p-2">
+                <Search className="w-4 h-4 text-espresso/50 shrink-0" aria-hidden />
+                <input
+                  type="search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search products..."
+                  className="flex-1 min-w-0 py-1.5 px-2 bg-transparent border-0 outline-none font-body text-sm text-espresso placeholder:text-espresso/50"
+                  aria-label="Search products"
+                />
+              </form>
               {mobileNavLinks.map((link) => (
                 <Link
                   key={link.href}
@@ -206,7 +236,7 @@ export default function Navbar() {
               ))}
               <Link
                 href="/products"
-                className="block bg-sage text-white px-4 py-2 rounded-lg font-body text-sm font-medium text-center hover:bg-sage/90 transition-all"
+                className="inline-flex items-center justify-center rounded-full bg-sage text-white px-6 py-2 font-body text-sm font-bold hover:bg-sage/90 transition-all w-fit"
                 onClick={() => setIsOpen(false)}
               >
                 Shop Now

@@ -28,7 +28,7 @@ export default function FeaturedProducts() {
   };
 
   return (
-    <section className="bg-parchment py-16 md:py-24">
+    <section className="bg-white py-16 md:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="mb-12">
           <SectionHeader

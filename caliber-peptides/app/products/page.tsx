@@ -1,71 +1,86 @@
 'use client';
 
-import { useState, Suspense } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useState } from 'react';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
-import ProductGrid from '@/components/products/ProductGrid';
-import ProductFilters from '@/components/products/ProductFilters';
-import SectionHeader from '@/components/ui/SectionHeader';
+import ProductSidebar from '@/components/products/ProductSidebar';
+import ProductCatalogCard from '@/components/products/ProductCatalogCard';
 import { products } from '@/lib/products';
 
-function ProductsPageContent() {
-  const searchParams = useSearchParams();
-  const categoryParam = searchParams.get('category');
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(
-    categoryParam || null
-  );
+export default function ProductsPage() {
+  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
 
-  const filteredProducts = selectedCategory
-    ? products.filter((p) => p.category === selectedCategory)
-    : products;
+  // When a specific product is selected, show only that product; otherwise filter by category
+  const displayedProducts = selectedProduct
+    ? products.filter((p) => p.slug === selectedProduct)
+    : selectedCategory
+      ? products.filter((p) => p.category === selectedCategory)
+      : products;
 
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-parchment">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <SectionHeader
-            title="Product Catalog"
-            subtitle="Browse our complete collection of research-grade peptides"
-            align="center"
-          />
+      <div className="min-h-screen bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+          {/* Header */}
+          <div className="mb-12">
+            <span className="font-mono text-xs uppercase tracking-widest text-sage block mb-2">
+              Research Products
+            </span>
+            <h1 className="font-display text-5xl font-normal text-espresso mb-3">
+              Product Catalog
+            </h1>
+            <p className="font-body text-lg text-espresso/70">
+              Browse our complete collection of research-grade peptides
+            </p>
+          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 mt-12">
-            {/* Filters - Desktop */}
-            <div className="hidden lg:block">
-              <div className="sticky top-24">
-                <ProductFilters
+          {/* Main Layout: Sidebar + Grid */}
+          <div className="flex flex-col lg:flex-row gap-8">
+            {/* Left Sidebar - Desktop */}
+            <div className="hidden lg:block flex-shrink-0">
+              <div className="sticky top-24 w-64 border border-glass rounded-lg overflow-hidden">
+                <ProductSidebar
                   selectedCategory={selectedCategory}
-                  onCategoryChange={setSelectedCategory}
+                  selectedProduct={selectedProduct}
+                  onCategorySelect={setSelectedCategory}
+                  onProductSelect={setSelectedProduct}
                 />
               </div>
             </div>
 
-            {/* Products Grid */}
-            <div className="lg:col-span-3">
-              {/* Mobile Filters */}
-              <div className="lg:hidden mb-8">
-                <ProductFilters
+            {/* Right Content - Products Grid */}
+            <div className="flex-1 min-w-0">
+              {/* Mobile Sidebar */}
+              <div className="lg:hidden mb-8 border border-glass rounded-lg overflow-hidden">
+                <ProductSidebar
                   selectedCategory={selectedCategory}
-                  onCategoryChange={setSelectedCategory}
+                  selectedProduct={selectedProduct}
+                  onCategorySelect={setSelectedCategory}
+                  onProductSelect={setSelectedProduct}
                 />
               </div>
 
-              <ProductGrid products={filteredProducts} />
+              {/* Product Grid */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {displayedProducts.map((product) => (
+                  <ProductCatalogCard key={product.id} product={product} />
+                ))}
+              </div>
+
+              {displayedProducts.length === 0 && (
+                <div className="text-center py-12">
+                  <p className="font-body text-lg text-espresso/70">
+                    No products found in this category.
+                  </p>
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
       <Footer />
     </>
-  );
-}
-
-export default function ProductsPage() {
-  return (
-    <Suspense fallback={<div>Loading...</div>}>
-      <ProductsPageContent />
-    </Suspense>
   );
 }

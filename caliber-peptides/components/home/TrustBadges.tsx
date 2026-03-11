@@ -1,61 +1,44 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Badge from '@/components/ui/Badge';
-import { CheckCircle, Beaker, Truck, FileText } from 'lucide-react';
 
 export default function TrustBadges() {
-  const badges = [
-    { icon: Beaker, label: 'HPLC Verified' },
-    { icon: CheckCircle, label: '99%+ Purity' },
-    { icon: Truck, label: 'USA Warehouse' },
-    { icon: FileText, label: 'COA Included' },
+  const words = [
+    'LABORATORY GRADE',
+    'THIRD-PARTY TESTED',
+    'RESEARCHER TRUSTED',
+    'PURITY VERIFIED',
+    'SCIENCE-BACKED',
+    'TRANSPARENT SOURCING',
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 },
-    },
-  };
+  // Create a duplicated array for seamless infinite scroll
+  const scrollWords = [...words, ...words];
 
   return (
-    <section className="bg-parchment py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-espresso py-12 overflow-hidden">
+      <div className="relative overflow-hidden">
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
+          className="flex gap-8 whitespace-nowrap"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{
+            duration: 40,
+            repeat: Infinity,
+            ease: 'linear',
+          }}
+          style={{ width: 'max-content' }}
         >
-          {badges.map((item, idx) => {
-            const Icon = item.icon;
-            return (
-              <motion.div
-                key={idx}
-                variants={itemVariants}
-                className="flex items-center justify-center gap-3 p-4 bg-[#d1dbcb]/40 rounded-lg border border-[#d1dbcb]"
-              >
-                <Icon size={20} className="text-[#7d8f78] flex-shrink-0" />
-                <span className="font-mono text-sm font-semibold text-espresso">
-                  {item.label}
-                </span>
-              </motion.div>
-            );
-          })}
+          {scrollWords.map((word, idx) => (
+            <span
+              key={idx}
+              className="font-display text-lg md:text-xl font-normal text-parchment tracking-wide flex-shrink-0"
+            >
+              {word}
+              {idx !== scrollWords.length - 1 && (
+                <span className="mx-8 text-sage">·</span>
+              )}
+            </span>
+          ))}
         </motion.div>
       </div>
     </section>

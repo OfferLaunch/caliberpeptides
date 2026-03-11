@@ -30,23 +30,23 @@ const AnimatedTabs = ({
   return (
     <div
       className={cn(
-        'w-full max-w-2xl mx-auto flex flex-col gap-y-3',
+        'w-fit mx-auto flex flex-col gap-y-3',
         className
       )}
     >
-      <div className="flex gap-2 flex-wrap bg-glass/50 backdrop-blur-sm p-1.5 rounded-xl border border-glass">
+      <div className="flex gap-2 flex-nowrap bg-glass/50 backdrop-blur-sm p-1.5 rounded-xl border border-glass">
         {tabs.map((tab) => (
           <button
             key={tab.id}
             onClick={() => setActiveTab(tab.id)}
             className={cn(
-              'relative px-4 py-2 text-sm font-medium rounded-lg text-espresso outline-none transition-colors font-body'
+              'relative shrink-0 px-4 py-2 text-sm font-medium rounded-lg text-espresso outline-none transition-colors font-body'
             )}
           >
             {activeTab === tab.id && (
               <motion.div
                 layoutId="active-tab"
-                className="absolute inset-0 bg-parchment shadow-sm rounded-lg border border-glass"
+                className="absolute inset-0 bg-white shadow-sm rounded-lg border border-glass"
                 transition={{ type: 'spring', duration: 0.6 }}
               />
             )}
@@ -55,7 +55,7 @@ const AnimatedTabs = ({
         ))}
       </div>
 
-      <div className="p-4 md:p-6 bg-white/80 border border-glass shadow-sm rounded-xl min-h-[280px] overflow-hidden">
+      <div className="w-full min-w-0 p-4 md:p-6 bg-white/80 border border-glass shadow-sm rounded-xl min-h-[280px] overflow-hidden">
         {tabs.map(
           (tab) =>
             activeTab === tab.id && (

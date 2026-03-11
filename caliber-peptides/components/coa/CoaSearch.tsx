@@ -31,7 +31,7 @@ export default function CoaSearch() {
             placeholder="Enter batch number (e.g., CP-123-2024)"
             value={batchNumber}
             onChange={(e) => setBatchNumber(e.target.value)}
-            className="flex-1 px-4 py-3 rounded-lg border-2 border-[#d1dbcb] bg-parchment text-espresso placeholder-espresso/50 focus:outline-none focus:border-[#7d8f78] font-body"
+            className="flex-1 px-4 py-3 rounded-lg border-2 border-[#d1dbcb] bg-white text-espresso placeholder-espresso/50 focus:outline-none focus:border-[#7d8f78] font-body"
           />
           <Button
             type="submit"
@@ -55,19 +55,19 @@ export default function CoaSearch() {
               </h3>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
-                <div className="bg-parchment rounded-lg p-4">
+                <div className="bg-white rounded-lg p-4">
                   <p className="font-mono text-xs text-espresso/60 mb-1">Product</p>
                   <p className="font-body font-semibold text-espresso">Ipamorelin</p>
                 </div>
-                <div className="bg-parchment rounded-lg p-4">
+                <div className="bg-white rounded-lg p-4">
                   <p className="font-mono text-xs text-espresso/60 mb-1">Batch</p>
                   <p className="font-mono font-semibold text-espresso">{batchNumber}</p>
                 </div>
-                <div className="bg-parchment rounded-lg p-4">
+                <div className="bg-white rounded-lg p-4">
                   <p className="font-mono text-xs text-espresso/60 mb-1">Purity</p>
                   <p className="font-body font-semibold text-espresso">99.2%</p>
                 </div>
-                <div className="bg-parchment rounded-lg p-4">
+                <div className="bg-white rounded-lg p-4">
                   <p className="font-mono text-xs text-espresso/60 mb-1">Date Tested</p>
                   <p className="font-body font-semibold text-espresso">
                     {new Date().toLocaleDateString()}
@@ -75,7 +75,7 @@ export default function CoaSearch() {
                 </div>
               </div>
 
-              <div className="bg-parchment rounded-lg p-6 mb-6">
+              <div className="bg-white rounded-lg p-6 mb-6">
                 <h4 className="font-body font-semibold text-espresso mb-4">
                   Test Results
                 </h4>

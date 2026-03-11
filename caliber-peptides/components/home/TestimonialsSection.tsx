@@ -66,7 +66,7 @@ const thirdColumn = testimonials.slice(6, 9);
 
 export default function TestimonialsSection() {
   return (
-    <section className="bg-parchment py-16 md:py-20 relative">
+    <section className="bg-espresso py-16 md:py-20 relative">
       <div className="container z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -75,15 +75,13 @@ export default function TestimonialsSection() {
           viewport={{ once: true }}
           className="flex flex-col items-center justify-center max-w-[540px] mx-auto"
         >
-          <div className="flex justify-center">
-            <span className="border border-glass text-espresso/80 font-body text-sm font-medium py-1.5 px-4 rounded-lg">
-              Testimonials
-            </span>
-          </div>
-          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight text-espresso mt-5">
+          <span className="font-mono text-xs uppercase tracking-widest text-sage block text-center mb-3">
+            From the Community
+          </span>
+          <h2 className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal tracking-tight text-parchment">
             What researchers say
           </h2>
-          <p className="font-body text-center mt-5 text-espresso/70 text-lg">
+          <p className="font-body text-center mt-5 text-parchment/80 text-lg">
             See what our customers have to say about us.
           </p>
         </motion.div>

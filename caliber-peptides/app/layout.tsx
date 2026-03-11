@@ -1,21 +1,18 @@
 import type { Metadata } from "next";
-import { Tenor_Sans, Plus_Jakarta_Sans, Inter, IBM_Plex_Mono } from "next/font/google";
+import { DM_Serif_Display, Plus_Jakarta_Sans, IBM_Plex_Mono } from "next/font/google";
+import DisclaimerModal from "@/components/DisclaimerModal";
+import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
 
-const tenorSans = Tenor_Sans({
-  variable: "--font-tenor-sans",
+const dmSerifDisplay = DM_Serif_Display({
+  weight: "400",
   subsets: ["latin"],
-  weight: ["400"],
+  variable: "--font-display",
+  display: "swap",
 });
 
 const plusJakartaSans = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
 });
@@ -39,9 +36,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${tenorSans.variable} ${plusJakartaSans.variable} ${inter.variable} ${ibmPlexMono.variable} antialiased`}
+        className={`${dmSerifDisplay.variable} ${plusJakartaSans.variable} ${ibmPlexMono.variable} antialiased`}
       >
-        {children}
+        <CartProvider>
+          <DisclaimerModal />
+          {children}
+        </CartProvider>
       </body>
     </html>
   );

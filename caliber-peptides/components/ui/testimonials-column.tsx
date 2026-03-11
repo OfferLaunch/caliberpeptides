@@ -38,22 +38,13 @@ export function TestimonialsColumn(props: {
                   <p className="font-body text-sm text-espresso/90 leading-relaxed">
                     {text}
                   </p>
-                  <div className="flex items-center gap-3 mt-5">
-                    <img
-                      width={40}
-                      height={40}
-                      src={image}
-                      alt={name}
-                      className="h-10 w-10 rounded-full object-cover bg-glass"
-                    />
-                    <div className="flex flex-col">
-                      <span className="font-body font-medium text-sm tracking-tight text-espresso">
-                        {name}
-                      </span>
-                      <span className="font-body text-xs text-espresso/60 tracking-tight">
-                        {role}
-                      </span>
-                    </div>
+                  <div className="flex flex-col mt-5">
+                    <span className="font-body font-medium text-sm tracking-tight text-espresso">
+                      {name}
+                    </span>
+                    <span className="font-body text-xs text-espresso/60 tracking-tight">
+                      {role}
+                    </span>
                   </div>
                 </div>
               ))}

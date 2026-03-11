@@ -19,18 +19,20 @@ export default function ProductCard({ product }: ProductCardProps) {
       className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md transition-shadow h-full flex flex-col border border-[#d1dbcb]"
     >
       {/* Image */}
-      <div className="relative h-48 bg-espresso/5 overflow-hidden">
-        <div className="w-full h-full bg-gradient-to-br from-glass to-parchment flex items-center justify-center">
-          <span className="text-espresso/40 text-center text-sm">
-            {product.name}
-          </span>
-        </div>
+      <div className="relative aspect-square bg-espresso/5 overflow-hidden">
+        <Image
+          src={product.image}
+          alt={product.name}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 33vw"
+        />
       </div>
 
       {/* Content */}
       <div className="p-4 flex-1 flex flex-col">
         <Link href={`/products/${product.slug}`}>
-          <h3 className="font-body font-bold text-lg text-espresso hover:text-sage transition-colors mb-2">
+          <h3 className="font-body font-semibold text-lg text-espresso hover:text-sage transition-colors mb-2">
             {product.name}
           </h3>
         </Link>
@@ -39,13 +41,12 @@ export default function ProductCard({ product }: ProductCardProps) {
           {product.description}
         </p>
 
-        <div className="flex items-center justify-between mb-4">
-          <Badge variant="sage">{product.purity}% Purity</Badge>
+        <div className="mb-4">
           <Badge variant="default">{product.form}</Badge>
         </div>
 
         <div className="flex items-center justify-between mb-4">
-          <span className="font-mono text-2xl font-bold text-espresso">
+          <span className="font-body text-xl font-semibold text-espresso">
             ${product.price.toFixed(2)}
           </span>
           <span className="font-body text-xs text-espresso/50">{product.category}</span>

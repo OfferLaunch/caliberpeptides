@@ -3,22 +3,22 @@ import TrustBadges from '@/components/home/TrustBadges';
 import FeaturedProducts from '@/components/home/FeaturedProducts';
 import CategoryGrid from '@/components/home/CategoryGrid';
 import AboutStrip from '@/components/home/AboutStrip';
-import BlogPreview from '@/components/home/BlogPreview';
 import TestimonialsSection from '@/components/home/TestimonialsSection';
+import FAQ from '@/components/home/FAQ';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-parchment">
+    <div className="min-h-screen bg-white">
       <Navbar />
       <Hero />
       <TrustBadges />
       <FeaturedProducts />
       <CategoryGrid />
       <AboutStrip />
-      <BlogPreview />
       <TestimonialsSection />
+      <FAQ />
       <Footer />
     </div>
   );

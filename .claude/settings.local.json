@@ -6,7 +6,13 @@
       "Bash(npm install:*)",
       "Bash(npm run:*)",
       "Bash(\"/Users/jacobarnold/Caliber Peptides/caliber-peptides/public/logos/.gitkeep\":*)",
-      "Bash(pkill:*)"
+      "Bash(pkill:*)",
+      "Bash(cd \"/Users/jacobarnold/Caliber Peptides/caliber-peptides\" && find . -name \"*.tsx\" -o -name \"*.ts\" | xargs sed -i '' 's/bg-parchment/bg-white/g' && echo \"Replaced all bg-parchment with bg-white\")",
+      "mcp__claude_ai_Canva__generate-design",
+      "Bash(sleep 4 && tail -20 /tmp/dev.log && curl -s http://localhost:3001/products/tesamorelin | head -50)",
+      "Bash(sleep 2 && curl -s http://localhost:3000/products/tesamorelin 2>&1 | wc -l)",
+      "Bash(cd \"/Users/jacobarnold/Caliber Peptides/caliber-peptides\" && npx @next/codemod@latest new-link . 2>&1 | tail -30)",
+      "Bash(cd \"/Users/jacobarnold/Caliber Peptides/caliber-peptides\" && npx @next/codemod@latest new-link . --force 2>&1 | tail -50)"
     ]
   }
 }
