@@ -24,7 +24,7 @@ export default function ProductCatalogCard({ product }: ProductCatalogCardProps)
           <h3 className="font-body font-bold text-lg text-espresso mb-0.5">
             {product.name}
           </h3>
-          <p className="font-body text-sm font-medium text-espresso/80 mb-0">
+          <p className="font-mono text-sm font-medium text-espresso/80 mb-0">
             {product.catalogSubtitle ?? product.category}
           </p>
           <span className="font-body text-base font-semibold text-espresso">

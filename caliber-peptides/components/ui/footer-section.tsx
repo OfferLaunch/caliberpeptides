@@ -212,7 +212,32 @@ function FooterSection() {
           </div>
         </div>
 
-        <div className="mt-12 pt-8 text-center border-t border-white/20">
+        {/* Payment methods - one row, small icons */}
+        <div className="mt-10 pt-8 border-t border-white/20">
+          <p className="font-body text-xs text-white/60 text-center mb-3">
+            We accept
+          </p>
+          <div className="w-[75%] max-w-4xl mx-auto flex items-center justify-between">
+            {[
+              { src: '/images/payment/visa-card.svg', alt: 'Visa' },
+              { src: '/images/payment/mastercard-card.svg', alt: 'Mastercard' },
+              { src: '/images/payment/amex-card.svg', alt: 'American Express' },
+              { src: '/images/payment/paypal-card.svg', alt: 'PayPal' },
+              { src: '/images/payment/applepay-card.svg', alt: 'Apple Pay' },
+            ].map(({ src, alt }) => (
+              <Image
+                key={src}
+                src={src}
+                alt={alt}
+                width={56}
+                height={40}
+                className="h-8 w-auto object-contain opacity-90"
+              />
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-8 pt-8 text-center border-t border-white/20">
           <p className="font-body text-sm text-white/80">
             © {currentYear} Caliber Peptides. All rights reserved.
           </p>

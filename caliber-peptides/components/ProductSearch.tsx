@@ -91,13 +91,14 @@ export default function ProductSearch() {
       >
         <Search className="w-4 h-4 text-espresso/50 shrink-0 ml-3" aria-hidden />
         <input
-          type="search"
+          type="text"
+          role="search"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onKeyDown={handleKeyDown}
           onFocus={() => query && setIsOpen(true)}
           placeholder="Search products..."
-          className="search-input-clear-only w-36 lg:w-44 py-2 px-2 pr-3 bg-transparent border-0 outline-none font-body text-sm text-espresso placeholder:text-espresso/50"
+          className="w-36 lg:w-44 py-2 px-2 pr-3 bg-transparent border-0 outline-none font-body text-sm text-espresso placeholder:text-espresso/50"
           aria-label="Search products"
           autoComplete="off"
         />

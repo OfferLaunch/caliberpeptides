@@ -15,9 +15,26 @@ export default function DisclaimerModal() {
     }
   }, []);
 
+  // Block Escape from closing the modal — only "I Agree" can dismiss
+  useEffect(() => {
+    if (!showModal) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') e.preventDefault();
+    };
+    document.addEventListener('keydown', onKeyDown, { capture: true });
+    return () => document.removeEventListener('keydown', onKeyDown, { capture: true });
+  }, [showModal]);
+
   const handleAgree = () => {
     localStorage.setItem('caliber_disclaimer_accepted', 'true');
     setShowModal(false);
+  };
+
+  // Only close via "I Agree" — backdrop click does nothing
+  const handleBackdropClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (e.target !== e.currentTarget) return;
+    // Click was on overlay; do not close
   };
 
   return (
@@ -29,6 +46,10 @@ export default function DisclaimerModal() {
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="fixed inset-0 bg-espresso/70 backdrop-blur-sm z-[9999] flex items-center justify-center p-4"
+          onClick={handleBackdropClick}
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="disclaimer-title"
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -36,6 +57,7 @@ export default function DisclaimerModal() {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ duration: 0.4 }}
             className="max-w-lg rounded-2xl bg-white p-8 shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
           >
             {/* Logo */}
             <div className="flex justify-center mb-6">
@@ -50,7 +72,7 @@ export default function DisclaimerModal() {
             </div>
 
             {/* Header */}
-            <h2 className="font-display text-2xl text-espresso text-center mb-6">
+            <h2 id="disclaimer-title" className="font-display text-2xl text-espresso text-center mb-6">
               Research Use Only
             </h2>
 
