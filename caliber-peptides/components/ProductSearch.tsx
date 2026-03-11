@@ -97,7 +97,7 @@ export default function ProductSearch() {
           onKeyDown={handleKeyDown}
           onFocus={() => query && setIsOpen(true)}
           placeholder="Search products..."
-          className="w-36 lg:w-44 py-2 px-2 pr-3 bg-transparent border-0 outline-none font-body text-sm text-espresso placeholder:text-espresso/50"
+          className="search-input-clear-only w-36 lg:w-44 py-2 px-2 pr-3 bg-transparent border-0 outline-none font-body text-sm text-espresso placeholder:text-espresso/50"
           aria-label="Search products"
           autoComplete="off"
         />
@@ -137,31 +137,16 @@ export default function ProductSearch() {
                   <button
                     type="button"
                     onClick={() => handleSelectProduct(product.slug)}
-                    className={`w-full px-4 py-3 flex items-center gap-3 text-left transition-colors border-b border-glass/30 last:border-b-0 hover:bg-parchment ${
+                    className={`w-full px-4 py-3 flex items-center justify-between gap-3 text-left transition-colors border-b border-glass/30 last:border-b-0 hover:bg-parchment ${
                       selectedIndex === idx ? 'bg-parchment' : ''
                     }`}
                   >
-                    {/* Product Thumbnail */}
-                    <div className="w-12 h-12 rounded bg-gradient-to-br from-sage/20 to-glass/30 flex-shrink-0 flex items-center justify-center border border-glass/50">
-                      <span className="text-xs font-mono text-espresso/60">
-                        {product.name.slice(0, 2).toUpperCase()}
-                      </span>
-                    </div>
-
-                    {/* Product Info */}
-                    <div className="flex-1 min-w-0">
-                      <div className="font-body font-semibold text-espresso text-sm">
-                        {product.name}
-                      </div>
-                      <div className="text-xs text-espresso/60 font-mono">
-                        {product.category}
-                      </div>
-                    </div>
-
-                    {/* Price */}
-                    <div className="text-sm font-semibold text-sage flex-shrink-0">
-                      ${product.price}
-                    </div>
+                    <span className="font-body font-semibold text-espresso text-sm truncate">
+                      {product.name}
+                    </span>
+                    <span className="text-sm font-semibold text-sage flex-shrink-0">
+                      ${product.price.toFixed(2)}
+                    </span>
                   </button>
                 </motion.li>
               ))}

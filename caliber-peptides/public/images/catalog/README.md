@@ -20,3 +20,5 @@ These images appear in the product cards on the Products catalog page. Lowercase
 | `bac-water.png` | BAC Water |
 
 Use 4×5 aspect ratio (e.g. 400×500 px) to match the card layout. Add `nad-plus.png` if it’s missing.
+
+**After cropping or replacing images:** Save over the existing file with the same filename. The app serves these directly, so a refresh (or hard refresh if needed) will show the new crop.

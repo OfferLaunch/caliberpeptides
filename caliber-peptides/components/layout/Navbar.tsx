@@ -127,7 +127,7 @@ export default function Navbar() {
                     Products
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[320px] gap-1 p-3 md:w-[380px] md:grid-cols-2">
+                    <ul className="grid w-[320px] gap-1 p-3 md:w-[380px] md:grid-cols-2 max-h-[70vh] overflow-y-auto">
                       <li className="row-span-3">
                         <NavigationMenuLink asChild>
                           <Link
@@ -143,7 +143,7 @@ export default function Navbar() {
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      {productLinks.slice(0, 4).map((item) => (
+                      {productLinks.map((item) => (
                         <NavListItem
                           key={item.href}
                           title={item.title}

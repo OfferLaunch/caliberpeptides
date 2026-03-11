@@ -36,3 +36,13 @@ body {
 [id] {
   scroll-margin-top: 5rem;
 }
+
+/* Single clear control for search: hide browser’s native (e.g. blue) clear so only our X shows */
+.search-input-clear-only::-webkit-search-cancel-button,
+.search-input-clear-only::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+.search-input-clear-only::-ms-clear {
+  display: none;
+}

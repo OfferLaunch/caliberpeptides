@@ -1,15 +1,71 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import Navbar from '@/components/layout/Navbar';
 import Footer from '@/components/layout/Footer';
 import ProductSidebar from '@/components/products/ProductSidebar';
 import ProductCatalogCard from '@/components/products/ProductCatalogCard';
-import { products } from '@/lib/products';
+import { products, categories } from '@/lib/products';
 
 export default function ProductsPage() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const categoryFromUrl = searchParams.get('category');
+  const productFromUrl = searchParams.get('product');
+
   const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
   const [selectedProduct, setSelectedProduct] = useState<string | null>(null);
+
+  // Sync state from URL on load and when URL changes (e.g. from nav dropdown)
+  useEffect(() => {
+    if (categoryFromUrl !== null) {
+      const valid = categories.includes(categoryFromUrl);
+      setSelectedCategory(valid ? categoryFromUrl : null);
+      setSelectedProduct(null);
+    } else if (productFromUrl !== null) {
+      const product = products.find((p) => p.slug === productFromUrl);
+      if (product) {
+        setSelectedCategory(product.category);
+        setSelectedProduct(product.slug);
+      } else {
+        setSelectedCategory(null);
+        setSelectedProduct(null);
+      }
+    } else {
+      setSelectedCategory(null);
+      setSelectedProduct(null);
+    }
+  }, [categoryFromUrl, productFromUrl]);
+
+  const updateUrl = useCallback(
+    (category: string | null, product: string | null) => {
+      const params = new URLSearchParams();
+      if (product) params.set('product', product);
+      if (category) params.set('category', category);
+      router.replace(`/products${params.toString() ? `?${params.toString()}` : ''}`);
+    },
+    [router]
+  );
+
+  const handleCategorySelect = useCallback(
+    (cat: string | null) => {
+      setSelectedCategory(cat);
+      setSelectedProduct(null);
+      updateUrl(cat, null);
+    },
+    [updateUrl]
+  );
+
+  const handleProductSelect = useCallback(
+    (slug: string | null) => {
+      setSelectedProduct(slug);
+      const product = products.find((p) => p.slug === slug);
+      setSelectedCategory(product?.category ?? null);
+      updateUrl(product?.category ?? null, slug);
+    },
+    [updateUrl]
+  );
 
   // When a specific product is selected, show only that product; otherwise filter by category
   const displayedProducts = selectedProduct
@@ -44,8 +100,8 @@ export default function ProductsPage() {
                 <ProductSidebar
                   selectedCategory={selectedCategory}
                   selectedProduct={selectedProduct}
-                  onCategorySelect={setSelectedCategory}
-                  onProductSelect={setSelectedProduct}
+                  onCategorySelect={handleCategorySelect}
+                  onProductSelect={handleProductSelect}
                 />
               </div>
             </div>
@@ -57,8 +113,8 @@ export default function ProductsPage() {
                 <ProductSidebar
                   selectedCategory={selectedCategory}
                   selectedProduct={selectedProduct}
-                  onCategorySelect={setSelectedCategory}
-                  onProductSelect={setSelectedProduct}
+                  onCategorySelect={handleCategorySelect}
+                  onProductSelect={handleProductSelect}
                 />
               </div>
 
