@@ -93,7 +93,7 @@ export default function SearchResults() {
             </p>
             <Link
               href="/products"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-sage text-white rounded-lg font-body font-medium hover:bg-sage/90 transition-all"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-navy text-white rounded-lg font-body font-medium hover:bg-navy/90 transition-all"
             >
               View All Products <ArrowRight className="w-4 h-4" />
             </Link>

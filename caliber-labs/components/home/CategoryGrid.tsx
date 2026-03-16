@@ -50,7 +50,7 @@ function CategoryTabContent({ card }: { card: (typeof categoryCards)[0] }) {
         </p>
         <Link
           href={`/products?category=${encodeURIComponent(card.name)}`}
-          className="inline-flex items-center gap-2 font-body text-sm font-medium text-sage hover:text-sage/80 transition-colors mt-2 w-fit"
+          className="inline-flex items-center gap-2 font-body text-sm font-medium text-navy hover:text-navy/80 transition-colors mt-2 w-fit"
         >
           Browse products
           <ArrowRight className="w-4 h-4" />

@@ -9,6 +9,7 @@ const config: Config = {
     extend: {
       colors: {
         espresso: '#1b263b',
+        navy: '#1e3a5f',
         sage: '#7D8F78',
         parchment: '#F5F2ED',
         glass: '#D1DBCB',

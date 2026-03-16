@@ -218,7 +218,7 @@ export default function ProductAccordions({
               <div className="px-6 py-6 bg-white border-t border-glass/50">
                 <Link
                   href={`/coa/${product.slug}`}
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-full px-6 py-2.5 border border-sage/50 bg-transparent font-body font-medium text-sage hover:bg-sage/10 hover:border-sage transition-all"
+                  className="inline-flex items-center justify-center gap-2 w-full rounded-full px-6 py-2.5 border border-navy/50 bg-transparent font-body font-medium text-navy hover:bg-navy/10 hover:border-navy transition-all"
                 >
                   <ExternalLink size={18} />
                   View Certificate of Analysis

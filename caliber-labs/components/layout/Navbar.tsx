@@ -94,7 +94,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-16">
           <Link href="/" className="flex items-center shrink-0">
             <Image
-              src="/logos/Full%20Logos/Sage%20+Navy%20Full.png"
+              src="/logos/Full%20Logos/Sage%20%2BNavy%20Full.png"
               alt="Caliber Labs"
               width={240}
               height={80}

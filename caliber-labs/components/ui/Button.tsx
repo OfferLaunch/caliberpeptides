@@ -17,8 +17,8 @@ export default function Button({
     'font-body font-medium rounded-lg transition-all duration-200 active:scale-95';
 
   const variantStyles = {
-    primary: 'bg-[#7d8f78] text-white hover:bg-[#7d8f78]/90 hover:shadow-lg',
-    secondary: 'border-2 border-[#7d8f78] text-[#7d8f78] hover:bg-[#7d8f78]/10',
+    primary: 'bg-navy text-white hover:bg-navy/90 hover:shadow-lg',
+    secondary: 'border-2 border-navy text-navy hover:bg-navy/10',
     ghost: 'text-espresso hover:bg-[#d1dbcb]/30',
   };
 
