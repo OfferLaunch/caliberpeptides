@@ -10,6 +10,20 @@ export function generateStaticParams() {
   return products.map((p) => ({ slug: p.slug }));
 }
 
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const product = getProductBySlug(slug);
+  if (!product) return { title: 'Product not found | Caliber Labs' };
+  return {
+    title: `${product.name} | Certificate of Analysis | Caliber Labs`,
+    description: `Certificate of Analysis for ${product.name}. Lab test results and purity data.`,
+  };
+}
+
 interface CoaProductPageProps {
   params: Promise<{ slug: string }>;
 }
