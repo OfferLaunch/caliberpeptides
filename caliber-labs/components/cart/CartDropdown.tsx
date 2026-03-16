@@ -176,7 +176,7 @@ export default function CartDropdown() {
                         type="submit"
                         variant="solid"
                         size="default"
-                        className="w-full"
+                        className="w-full border-2 border-white text-white"
                         disabled={isSubmitting}
                       >
                         {isSubmitting ? 'Taking you to checkout…' : 'Proceed to Checkout'}

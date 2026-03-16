@@ -254,7 +254,7 @@ export default function CheckoutPage() {
                     type="submit"
                     variant="solid"
                     size="lg"
-                    className="w-full font-bold"
+                    className="w-full font-bold border-2 border-white text-white"
                     disabled={isSubmitting}
                   >
                     {isSubmitting ? 'Processing…' : 'Proceed to Checkout'}
