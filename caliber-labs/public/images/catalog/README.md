@@ -12,7 +12,7 @@ These images appear in the product cards on the Products catalog page. Lowercase
 | `wolverine.png` | Wolverine |
 | `bpc-157.png` | BPC-157 |
 | `epitalon.png` | Epitalon |
-| `copper-compound.png` | GHK-Cu (Copper Compound) |
+| `ghk-cu.png` | GHK-CU |
 | `cjc1295-ipamorelin.png` | CJC 1295/Ipamorelin |
 | `glp-3r.png` | GLP-3R |
 | `bremelanotide.png` | Bremelanotide |

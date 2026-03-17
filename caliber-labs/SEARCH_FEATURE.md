@@ -76,7 +76,7 @@ Searches across:
 **Example**:
 - Query: "wolver" → Matches: "Wolverine" (name)
 - Query: "ghrh" → Matches: "Tesamorelin", "Sermorelin", "CJC 1295/Ipamorelin" (category/description)
-- Query: "repair" → Matches: "Copper Compound", "BPC-157" (description)
+- Query: "repair" → Matches: "GHK-CU", "BPC-157" (description)
 
 **Function**: `searchProducts(query)` in `/lib/products.ts`
 
@@ -226,7 +226,7 @@ Searches across:
 | "BPC" | BPC-157, Bremelanotide |
 | "purity" | All products (in description) |
 | "NAD" | NAD+ (Cellular Health) |
-| "repair" | Copper Compound, BPC-157 |
+| "repair" | GHK-CU, BPC-157 |
 | "metabolic" | GLP-3R, MOTS-C |
 | "recovery" | Wolverine |
 | "longevity" | Epitalon |
