@@ -84,7 +84,7 @@ function FooterSection() {
           <div className="border-t border-white/20 pt-8 lg:border-t-0 lg:pt-0 lg:border-l lg:border-l-white/20 lg:pl-8">
             <h3 className="mb-4 font-body text-lg font-semibold drop-shadow-md">Resources</h3>
             <address className="space-y-2 text-sm not-italic font-body">
-              <p className="text-white/90">Research-Grade Compounds</p>
+              <p className="text-white/90">Research-Grade Lyophilized Chemicals</p>
               <p className="text-white/80">
                 Email:{" "}
                 <a

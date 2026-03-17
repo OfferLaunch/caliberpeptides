@@ -1,5 +1,5 @@
 /**
- * Generates a white-circle favicon with the Brown Emblem centered inside.
+ * Generates a white-circle favicon with the Navy Emblem centered inside.
  * Output: app/icon.png (Next.js uses this automatically)
  * Run: node scripts/generate-favicon.mjs
  */
@@ -10,7 +10,7 @@ import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
-const emblemPath = join(root, 'public', 'logos', 'Emblems', 'Brown Emblem.png');
+const emblemPath = join(root, 'public', 'logos', 'Emblems', 'Navy Emblem.png');
 const size = 64;
 
 if (!existsSync(emblemPath)) {
@@ -27,7 +27,7 @@ const whiteCircleSvg = Buffer.from(
 
 const circlePng = await sharp(whiteCircleSvg).png().toBuffer();
 
-// Load emblem, ensure alpha, make near-black pixels transparent so only brown shape shows
+// Load emblem, ensure alpha
 const emblemSize = Math.round(size * 0.65);
 let emblemPipe = sharp(emblemPath)
   .resize(emblemSize, emblemSize, { fit: 'inside' })
@@ -47,4 +47,4 @@ await sharp(favicon64)
   .resize(32, 32)
   .toFile(join(root, 'app', 'icon.png'));
 
-console.log('Favicon generated: app/icon.png (white circle with Brown Emblem)');
+console.log('Favicon generated: app/icon.png (white circle with Navy Emblem)');

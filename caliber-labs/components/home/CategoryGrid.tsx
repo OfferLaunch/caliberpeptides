@@ -7,12 +7,12 @@ import { AnimatedTabs, type Tab } from '@/components/ui/animated-tabs';
 import { ArrowRight } from 'lucide-react';
 
 const categoryCards = [
-  { id: 'ghrp', name: 'GHRP', description: 'Growth hormone releasing compounds', image: '/images/categories/ghrp.png' },
-  { id: 'bpc', name: 'BPC Compounds', description: 'Body protection compounds', image: '/images/categories/bpc.png' },
-  { id: 'cognitive', name: 'Cognitive', description: 'Cognitive enhancement compounds', image: '/images/categories/cognitive.png' },
+  { id: 'ghrp', name: 'GHRP', description: 'Growth hormone releasing', image: '/images/categories/ghrp.png' },
+  { id: 'bpc', name: 'BPC', description: 'Body protection', image: '/images/categories/bpc.png' },
+  { id: 'cognitive', name: 'Cognitive', description: 'Cognitive enhancement', image: '/images/categories/cognitive.png' },
   { id: 'recovery', name: 'Recovery', description: 'Tissue repair and recovery', image: '/images/categories/recovery.png' },
   { id: 'immune', name: 'Immune Support', description: 'Immune system modulation', image: '/images/categories/immune.png' },
-  { id: 'specialty', name: 'Specialty', description: 'Specialized research compounds', image: '/images/categories/specialty.png' },
+  { id: 'specialty', name: 'Specialty', description: 'Specialized research', image: '/images/categories/specialty.png' },
 ];
 
 const gradientsByCategory: Record<string, string> = {
@@ -81,7 +81,7 @@ export default function CategoryGrid() {
             Browse by Category
           </span>
           <h2 className="font-display text-3xl md:text-4xl font-normal text-espresso text-center">
-            Find the Right Compounds
+            Find the Right Lyophilized Chemicals
           </h2>
         </motion.div>
 

@@ -17,42 +17,15 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu';
-import { categories } from '@/lib/products';
+import { categories, products } from '@/lib/products';
 import ProductSearch from '@/components/ProductSearch';
 import CartDropdown from '@/components/cart/CartDropdown';
 
-const productLinks = categories.map((cat) => ({
-  title: cat,
-  href: `/products?category=${encodeURIComponent(cat)}`,
-  description: `Browse ${cat} compounds`,
+// Categories with their products: nav links go straight to that product on the catalog
+const categoriesWithProducts = categories.map((cat) => ({
+  category: cat,
+  products: products.filter((p) => p.category === cat),
 }));
-
-const NavListItem = React.forwardRef<
-  HTMLAnchorElement,
-  React.ComponentPropsWithoutRef<'a'> & { title: string; href: string }
->(({ className, title, href, children, ...props }, ref) => (
-  <li>
-    <NavigationMenuLink asChild>
-      <a
-        ref={ref}
-        href={href}
-        className={cn(
-          'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-glass/50 hover:text-sage focus:bg-glass/50 focus:text-sage font-body text-sm text-espresso',
-          className
-        )}
-        {...props}
-      >
-        <div className="font-medium leading-none">{title}</div>
-        {children && (
-          <p className="line-clamp-2 text-sm leading-snug text-espresso/70">
-            {children}
-          </p>
-        )}
-      </a>
-    </NavigationMenuLink>
-  </li>
-));
-NavListItem.displayName = 'NavListItem';
 
 export default function Navbar() {
   const router = useRouter();
@@ -127,30 +100,42 @@ export default function Navbar() {
                     Products
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[320px] gap-1 p-3 md:w-[380px] md:grid-cols-2 max-h-[70vh] overflow-y-auto">
-                      <li className="row-span-3">
+                    <ul className="grid w-[320px] gap-1 p-3 md:w-[400px] max-h-[70vh] overflow-y-auto">
+                      <li>
                         <NavigationMenuLink asChild>
                           <Link
-                            className="flex h-full w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-glass/30 to-glass p-6 no-underline outline-none focus:shadow-md"
+                            className="flex w-full select-none flex-col justify-end rounded-md bg-gradient-to-b from-glass/30 to-glass p-4 no-underline outline-none focus:shadow-md mb-2"
                             href="/products"
                           >
-                            <div className="mb-2 mt-4 font-body text-lg font-medium text-espresso">
+                            <div className="font-body text-lg font-medium text-espresso">
                               All Products
                             </div>
                             <p className="text-sm leading-tight text-espresso/70">
-                              Research-grade compounds. HPLC verified, 99%+ purity.
+                              Research-grade lyophilized chemicals. HPLC verified, 99%+ purity.
                             </p>
                           </Link>
                         </NavigationMenuLink>
                       </li>
-                      {productLinks.map((item) => (
-                        <NavListItem
-                          key={item.href}
-                          title={item.title}
-                          href={item.href}
-                        >
-                          {item.description}
-                        </NavListItem>
+                      {categoriesWithProducts.map(({ category, products: catProducts }) => (
+                        <li key={category} className="border-t border-glass/60 pt-2 mt-2 first:border-t-0 first:pt-0 first:mt-0">
+                          <div className="font-body text-xs font-semibold uppercase tracking-wider text-espresso/70 px-2 pb-1">
+                            {category}
+                          </div>
+                          <ul className="space-y-0.5">
+                            {catProducts.map((product) => (
+                              <li key={product.slug}>
+                                <NavigationMenuLink asChild>
+                                  <Link
+                                    href={`/products?product=${encodeURIComponent(product.slug)}`}
+                                    className="block select-none rounded-md px-3 py-2 leading-none no-underline outline-none transition-colors hover:bg-glass/50 hover:text-navy focus:bg-glass/50 focus:text-navy font-body text-sm text-espresso"
+                                  >
+                                    {product.name}
+                                  </Link>
+                                </NavigationMenuLink>
+                              </li>
+                            ))}
+                          </ul>
+                        </li>
                       ))}
                     </ul>
                   </NavigationMenuContent>
@@ -187,7 +172,7 @@ export default function Navbar() {
             <CartDropdown />
             <Link
               href="/products"
-              className="inline-flex items-center justify-center rounded-full bg-sage text-white px-6 py-2 font-body text-sm font-bold hover:bg-sage/90 transition-all hover:scale-105 shrink-0 border border-sage"
+              className="inline-flex items-center justify-center rounded-full bg-navy text-white px-6 py-2 font-body text-sm font-bold hover:bg-navy/90 transition-all hover:scale-105 shrink-0 border-2 border-white"
             >
               Shop Now
             </Link>
@@ -236,7 +221,7 @@ export default function Navbar() {
               ))}
               <Link
                 href="/products"
-                className="inline-flex items-center justify-center rounded-full bg-sage text-white px-6 py-2 font-body text-sm font-bold hover:bg-sage/90 transition-all w-fit"
+                className="inline-flex items-center justify-center rounded-full bg-navy text-white px-6 py-2 font-body text-sm font-bold hover:bg-navy/90 transition-all w-fit border-2 border-white"
                 onClick={() => setIsOpen(false)}
               >
                 Shop Now

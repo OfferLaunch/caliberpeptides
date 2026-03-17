@@ -129,7 +129,7 @@ export default function AddToCartModal({
                 <PillButton
                   variant="solid"
                   size="default"
-                  className="flex-1"
+                  className="flex-1 border-2 border-white text-white"
                   onClick={handleAddToCart}
                 >
                   Add to Cart

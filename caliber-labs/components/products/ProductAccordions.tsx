@@ -55,7 +55,7 @@ export default function ProductAccordions({
                 <p className="font-body text-espresso/80 leading-relaxed">
                   {product.overview
                     ? product.overview
-                    : 'This is a research-grade compound, lab-verified and tested for purity and quality. Suitable for research purposes only. Each batch includes a Certificate of Analysis with full HPLC testing results.'}
+                    : 'This is a research-grade lyophilized chemical, lab-verified and tested for purity and quality. Suitable for research purposes only. Each batch includes a Certificate of Analysis with full HPLC testing results.'}
                 </p>
               </div>
             </motion.div>

@@ -7,7 +7,7 @@
 
 ## Article List
 
-### 1. TP-508: Understanding Thrombin Compound Repair Mechanisms
+### 1. TP-508: Understanding Thrombin Chemical Repair Mechanisms
 - **Date**: March 8, 2026
 - **Author**: Dr. Sarah Chen
 - **Category**: Research
@@ -15,12 +15,12 @@
 - **Excerpt**: Exploring how TP-508 modulates cellular signaling pathways to promote tissue regeneration and vascular responses in research models.
 - **Focus**: Thrombin compound mechanisms, tissue regeneration, cellular signaling
 
-### 2. AODD Compound: Analytical Characterization & Study Design
+### 2. AODD Chemical: Analytical Characterization & Study Design
 - **Date**: February 24, 2026
 - **Author**: Dr. Marcus Reed
 - **Category**: Technical
 - **Featured**: ⭐ Yes
-- **Excerpt**: Comprehensive analysis of alpha-oligodextran-derived compound properties and best practices for integrating AODD into research protocols.
+- **Excerpt**: Comprehensive analysis of alpha-oligodextran-derived chemical properties and best practices for integrating AODD into research protocols.
 - **Focus**: Analytical methods, protocol design, characterization techniques
 
 ### 3. Semax in Cognitive Research: Evidence from Recent Studies
@@ -28,15 +28,15 @@
 - **Author**: Dr. Lisa Wong
 - **Category**: Research
 - **Featured**: ⭐ Yes
-- **Excerpt**: Review of emerging research on synthetic compound Semax and its potential applications in neuroprotection and cognitive performance studies.
-- **Focus**: Cognitive enhancement, neuroprotection, research compounds
+- **Excerpt**: Review of emerging research on synthetic chemical Semax and its potential applications in neuroprotection and cognitive performance studies.
+- **Focus**: Cognitive enhancement, neuroprotection, research chemicals
 
 ### 4. Assay Validation: Mass Spectrometry vs HPLC Methods
 - **Date**: January 28, 2026
 - **Author**: Dr. James Mitchell
 - **Category**: Technical
 - **Featured**: No
-- **Excerpt**: A detailed comparison of analytical techniques for compound validation, including advantages, limitations, and protocol optimization strategies.
+- **Excerpt**: A detailed comparison of analytical techniques for chemical validation, including advantages, limitations, and protocol optimization strategies.
 - **Focus**: Analytical techniques, validation protocols, method comparison
 
 ### 5. IGF-1 LR3: Long-Acting Variant Applications in Research
@@ -68,18 +68,18 @@
 - **Author**: Dr. David Park
 - **Category**: Educational
 - **Featured**: No
-- **Excerpt**: Exploring actin-binding compound applications in connective tissue models and regenerative research outcomes from recent studies.
-- **Focus**: Tissue engineering, actin-binding compounds, connective tissue
+- **Excerpt**: Exploring actin-binding chemical applications in connective tissue models and regenerative research outcomes from recent studies.
+- **Focus**: Tissue engineering, actin-binding chemicals, connective tissue
 
 ### 9. Complete Guide to Reconstitution & Stability
 - **Date**: November 7, 2025
 - **Author**: Dr. Rachel Torres
 - **Category**: Technical
 - **Featured**: No
-- **Excerpt**: Best practices for preparing research compounds: solvents, pH buffers, storage conditions, and maintaining biological activity.
+- **Excerpt**: Best practices for preparing research chemicals: solvents, pH buffers, storage conditions, and maintaining biological activity.
 - **Focus**: Reconstitution protocols, storage best practices, stability
 
-### 10. 2026 Outlook: Emerging Compounds in Research & Academia
+### 10. 2026 Outlook: Emerging Chemicals in Research & Academia
 - **Date**: October 23, 2025
 - **Author**: Dr. Michael Foster
 - **Category**: Educational
@@ -111,7 +111,7 @@
 
 All 10 blog posts have professional cover images generated using Canva:
 - ✅ **TP-508** cover created
-- ✅ **AODD Compound** cover created
+- ✅ **AODD Chemical** cover created
 - ✅ **Semax Cognitive** cover created
 - ✅ **Assay Validation** cover created
 - ✅ **IGF-1 LR3** cover created
@@ -148,7 +148,7 @@ You can now:
 ### Homepage Blog Preview
 The homepage automatically displays the first 3 featured posts:
 - TP-508 (Latest)
-- AODD Compound
+- AODD Chemical
 - Semax Cognitive Research
 
 ---
@@ -158,7 +158,7 @@ The homepage automatically displays the first 3 featured posts:
 All articles follow these principles:
 ✅ Professional, academic tone
 ✅ Research-focused language
-✅ Specific compound mechanisms and applications
+✅ Specific chemical mechanisms and applications
 ✅ Evidence-based approach
 ✅ Practical protocols and methodologies
 ✅ Recent Q4 2025 / Q1 2026 timestamps

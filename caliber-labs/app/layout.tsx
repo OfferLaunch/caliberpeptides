@@ -24,11 +24,8 @@ const ibmPlexMono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Caliber Labs | Research-Grade Compounds",
-  description: "Premium, lab-tested research compounds. HPLC verified, 99%+ purity.",
-  icons: {
-    icon: "/logos/Emblems/Navy%20Emblem.png",
-  },
+  title: "Caliber Labs | Research-Grade Lyophilized Chemicals",
+  description: "Premium, lab-tested lyophilized chemicals. HPLC verified, 99%+ purity.",
 };
 
 export default function RootLayout({

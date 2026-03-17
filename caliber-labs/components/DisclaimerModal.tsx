@@ -89,7 +89,7 @@ export default function DisclaimerModal() {
                 </p>
                 <ul className="list-disc list-inside space-y-2 text-espresso/70">
                   <li>You are purchasing these products for legitimate research purposes only</li>
-                  <li>You understand these compounds are not for human or animal consumption</li>
+                  <li>You understand these lyophilized chemicals are not for human or animal consumption</li>
                   <li>You are affiliated with a recognized research institution, laboratory, or educational organization, or are a qualified independent researcher</li>
                   <li>You comply with all applicable local, state, and federal laws governing the purchase and use of these materials</li>
                 </ul>

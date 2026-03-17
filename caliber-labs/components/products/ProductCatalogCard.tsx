@@ -31,7 +31,7 @@ export default function ProductCatalogCard({ product }: ProductCatalogCardProps)
             from ${product.price.toFixed(2)}
           </span>
           <Link href={`/products/${product.slug}`} className="mt-2">
-            <PillButton variant="solid" size="default" className="font-bold w-fit">
+            <PillButton variant="solid" size="default" className="font-bold w-fit border-2 border-white text-white">
               Learn More
             </PillButton>
           </Link>

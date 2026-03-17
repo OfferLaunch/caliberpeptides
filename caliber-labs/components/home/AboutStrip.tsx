@@ -57,7 +57,7 @@ export default function AboutStrip() {
               Quality You Can Trust
             </h2>
             <p className="font-body text-lg text-espresso/80 mb-6">
-              Every compound we ship is produced to remove variables and let your data speak for itself.
+              Every lyophilized chemical we ship is produced to remove variables and let your data speak for itself.
             </p>
           </motion.div>
 

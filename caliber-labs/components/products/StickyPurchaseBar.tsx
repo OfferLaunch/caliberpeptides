@@ -58,7 +58,7 @@ export default function StickyPurchaseBar({
                 variant="solid"
                 size="sm"
                 onClick={onAddToCart}
-                className="whitespace-nowrap"
+                className="whitespace-nowrap border-2 border-white text-white"
               >
                 {added ? '✓ Added' : 'Add to Cart'}
               </PillButton>

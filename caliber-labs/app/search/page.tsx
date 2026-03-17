@@ -3,7 +3,7 @@ import SearchResults from '@/components/SearchResults';
 
 export const metadata = {
   title: 'Search Products | Caliber Labs',
-  description: 'Search for research-grade compounds',
+  description: 'Search for research-grade lyophilized chemicals',
 };
 
 function SearchLoading() {

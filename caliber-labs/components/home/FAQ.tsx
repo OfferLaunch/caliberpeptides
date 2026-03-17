@@ -21,12 +21,12 @@ export default function FAQ() {
     {
       question: 'Are your products intended for human or veterinary use?',
       answer:
-        'No. All compounds are for research use only and must not be consumed or administered in any form.',
+        'No. All lyophilized chemicals are for research use only and must not be consumed or administered in any form.',
     },
     {
       question: 'Who is eligible to purchase from Caliber Labs?',
       answer:
-        'Our products are available exclusively to qualified researchers, institutions, and laboratories conducting lawful scientific research. By placing an order, customers affirm they are purchasing for research purposes only and understand that our compounds are not approved by the FDA for clinical or personal use.',
+        'Our products are available exclusively to qualified researchers, institutions, and laboratories conducting lawful scientific research. By placing an order, customers affirm they are purchasing for research purposes only and understand that our lyophilized chemicals are not approved by the FDA for clinical or personal use.',
     },
     {
       question: 'Do you require verification for orders?',

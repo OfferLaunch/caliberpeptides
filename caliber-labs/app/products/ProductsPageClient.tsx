@@ -94,7 +94,7 @@ export default function ProductsPageClient() {
               Product Catalog
             </h1>
             <p className="font-body text-lg text-espresso/70">
-              Browse our complete collection of research-grade compounds
+              Browse our complete collection of research-grade lyophilized chemicals
             </p>
           </div>
 

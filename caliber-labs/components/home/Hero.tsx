@@ -45,7 +45,7 @@ export default function Hero() {
           <div className="flex flex-col gap-6 items-center lg:items-start text-center lg:text-left order-2 lg:order-1">
             <motion.div variants={itemVariants}>
               <span className="font-mono text-xs uppercase tracking-widest text-sage">
-                Research-Grade Compounds
+                Research-Grade Lyophilized Chemicals
               </span>
             </motion.div>
 
@@ -55,7 +55,7 @@ export default function Hero() {
               </h1>
 
               <p className="font-body text-base md:text-lg leading-relaxed tracking-tight text-espresso/80 max-w-2xl mx-auto lg:mx-0">
-                Every compound in the Caliber Labs catalog is independently tested, fully documented, and produced under strict quality controls. Because serious research demands serious materials.
+                Every lyophilized chemical in the Caliber Labs catalog is independently tested, fully documented, and produced under strict quality controls. Because serious research demands serious materials.
               </p>
             </motion.div>
 

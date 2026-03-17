@@ -13,7 +13,7 @@ npm run lint     # Run ESLint
 
 ## Project Overview
 
-**Caliber Labs** is a marketing + e-commerce catalog website for research-grade compounds. Built with Next.js 14 App Router, TypeScript, Tailwind CSS, and Framer Motion animations.
+**Caliber Labs** is a marketing + e-commerce catalog website for research-grade lyophilized chemicals. Built with Next.js 14 App Router, TypeScript, Tailwind CSS, and Framer Motion animations.
 
 ### Key Tech Stack
 - **Framework**: Next.js 16.1.6 (App Router)
@@ -69,7 +69,7 @@ interface Product {
   id: string;
   name: string;
   slug: string;
-  category: string;        // 'GHRP', 'BPC Compounds', 'Recovery', etc.
+  category: string;        // 'GHRP', 'BPC', 'Recovery', etc.
   purity: number;          // e.g., 99.2 (percentage)
   price: number;           // USD
   form: string;            // e.g., 'Lyophilized Powder'

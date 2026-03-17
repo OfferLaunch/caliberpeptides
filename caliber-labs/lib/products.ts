@@ -89,7 +89,7 @@ export const products: Product[] = [
       },
       {
         question: 'How long does a vial remain stable once received?',
-        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the compound should be used within the timeframe appropriate for the specific compound and storage conditions.',
+        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the lyophilized chemical should be used within the timeframe appropriate for the specific chemical and storage conditions.',
       },
     ],
   },
@@ -106,7 +106,7 @@ export const products: Product[] = [
     description: 'GHRH (1-29) analog for growth hormone research.',
     vialMg: '5 mg',
     specs: '3mL vial',
-    overview: 'Sermorelin is a synthetic compound made up of the first 29 amino acids that bind to GHRH receptors, triggering the body\'s own release of growth hormone. Studies suggest that since subjects\' natural feedback systems remain intact, this compound may be a more natural way to increase growth hormone versus direct administration.',
+    overview: 'Sermorelin is a synthetic lyophilized chemical made up of the first 29 amino acids that bind to GHRH receptors, triggering the body\'s own release of growth hormone. Studies suggest that since subjects\' natural feedback systems remain intact, this chemical may be a more natural way to increase growth hormone versus direct administration.',
     researchEffects: [
       'Studies show sermorelin stimulates growth hormone release in natural pulses without meaningfully affecting cortisol, insulin, prolactin, or other pituitary hormones, suggesting a selective mechanism',
       'Research confirms it raises IGF-1 levels in a dose-responsive manner, with increases observed within two weeks of beginning a protocol',
@@ -152,7 +152,7 @@ export const products: Product[] = [
       },
       {
         question: 'How long does a vial remain stable once received?',
-        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the compound should be used within the timeframe appropriate for the specific compound and storage conditions.',
+        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the lyophilized chemical should be used within the timeframe appropriate for the specific chemical and storage conditions.',
       },
     ],
   },
@@ -229,7 +229,7 @@ export const products: Product[] = [
       },
       {
         question: 'How long does a vial remain stable once received?',
-        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the compound should be used within the timeframe appropriate for the specific compound and storage conditions.',
+        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the lyophilized chemical should be used within the timeframe appropriate for the specific chemical and storage conditions.',
       },
     ],
   },
@@ -243,15 +243,15 @@ export const products: Product[] = [
     price: 89.99,
     form: 'Lyophilized Powder',
     image: '/images/glow.png',
-    description: 'Three-compound blend for tissue repair and regeneration research.',
+    description: 'Three-chemical blend for tissue repair and regeneration research.',
     vialMg: '70 mg',
     specs: '70mg - BPC157 10mg + TB-500 10mg + GHK-Cu 50mg',
-    overview: 'GLOW is a three-compound blend of BPC-157, TB-500, and GHK-Cu. Each compound is theorized to have positive effects on tissue repair, collagen remodeling, and cellular regeneration. It is suggested that when combined, they address the repair process more effectively and holistically, resulting in major interest from researchers.',
+    overview: 'GLOW is a three-chemical blend of BPC-157, TB-500, and GHK-Cu. Each lyophilized chemical is theorized to have positive effects on tissue repair, collagen remodeling, and cellular regeneration. It is suggested that when combined, they address the repair process more effectively and holistically, resulting in major interest from researchers.',
     researchEffects: [
       'BPC-157 and TB-500 are both theorized to support new blood vessel formation at injury sites through separate signaling pathways, improving oxygen and nutrient delivery to tissue undergoing repair',
       'Research suggests TB-500 directs repair cells including fibroblasts and keratinocytes toward damaged tissue, while BPC-157 has been observed to increase growth hormone receptor expression on those same cells, potentially amplifying their response once they arrive',
       'GHK-Cu is theorized to simultaneously stimulate new collagen production while clearing damaged collagen, improving tissue quality rather than simply adding volume',
-      'All three compounds have demonstrated independent anti-inflammatory activity in research models, with observed reductions in TNF-α and IL-6 while preserving the early-stage inflammatory response tissue repair requires',
+      'All three chemicals have demonstrated independent anti-inflammatory activity in research models, with observed reductions in TNF-α and IL-6 while preserving the early-stage inflammatory response tissue repair requires',
       'Areas of active research include musculoskeletal recovery, dermal wound healing, ocular surface repair, and broader tissue regeneration across skin, hair, and connective tissue',
     ],
     researchFindings: [
@@ -299,7 +299,7 @@ export const products: Product[] = [
       },
       {
         question: 'How long does a vial remain stable once received?',
-        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the compound should be used within the timeframe appropriate for the specific compound and storage conditions.',
+        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the lyophilized chemical should be used within the timeframe appropriate for the specific chemical and storage conditions.',
       },
     ],
   },
@@ -316,13 +316,13 @@ export const products: Product[] = [
     description: 'BPC-157 and TB-500 blend for tissue repair research.',
     vialMg: '10 mg/10 mg',
     specs: '3mL vial',
-    overview: 'BPC-157 and TB-500 are a two-compound blend studied for their complementary roles in tissue repair, each approaching the process from a different biological starting point. Research suggests that where one addresses blood supply and growth factor response, the other handles cellular recruitment and movement toward the injury site.',
+    overview: 'BPC-157 and TB-500 are a two-chemical blend studied for their complementary roles in tissue repair, each approaching the process from a different biological starting point. Research suggests that where one addresses blood supply and growth factor response, the other handles cellular recruitment and movement toward the injury site.',
     researchEffects: [
       'BPC-157 is theorized to initiate the repair cascade by activating VEGFR2 signaling and stimulating new blood vessel formation, ensuring injured tissue receives the oxygen and nutrients required for rebuilding',
       'TB-500 is theorized to complement this by promoting actin-driven cell migration, directing fibroblasts, keratinocytes, and repair cells toward the injury site through cytoskeletal reorganization',
       'Research suggests BPC-157 upregulates growth hormone receptor expression on repair cells, increasing their sensitivity to existing healing signals, while TB-500 improves collagen fiber organization and uniformity at the repair site',
-      'Both compounds are theorized to independently reduce pro-inflammatory cytokines including TNF-α and IL-6, with their combined activity covering both the vascular stabilization phase and the cellular remodeling phase of tissue repair',
-      'Studies on each compound individually suggest the two mechanisms are non-overlapping, with BPC-157 addressing the signaling environment that governs cell survival and repair program activation, and TB-500 addressing the physical movement of cells once the repair signal is established',
+      'Both chemicals are theorized to independently reduce pro-inflammatory cytokines including TNF-α and IL-6, with their combined activity covering both the vascular stabilization phase and the cellular remodeling phase of tissue repair',
+      'Studies on each chemical individually suggest the two mechanisms are non-overlapping, with BPC-157 addressing the signaling environment that governs cell survival and repair program activation, and TB-500 addressing the physical movement of cells once the repair signal is established',
       'Areas of active research include musculoskeletal recovery, soft tissue repair, wound healing, and post-injury collagen remodeling',
     ],
     researchFindings: [
@@ -335,9 +335,9 @@ export const products: Product[] = [
       },
       {
         title: 'Systematic Review of Thymosin Beta-4 in Dermal Repair Models',
-        protocol: 'Review evaluating Thymosin Beta-4 across multiple preclinical wound models and two Phase 2 clinical trials assessed the compound\'s dermal repair activity across normal, steroid-treated, diabetic, and aged tissue models. Preclinical models included full-thickness punch wounds in rats and mice. Phase 2 clinical trial data for stasis and pressure ulcers also evaluated.',
+        protocol: 'Review evaluating Thymosin Beta-4 across multiple preclinical wound models and two Phase 2 clinical trials assessed the chemical\'s dermal repair activity across normal, steroid-treated, diabetic, and aged tissue models. Preclinical models included full-thickness punch wounds in rats and mice. Phase 2 clinical trial data for stasis and pressure ulcers also evaluated.',
         effects: 'Thymosin Beta-4 accelerated dermal healing across all preclinical models. In Phase 2 clinical data, healing was accelerated by approximately one month in subjects who achieved wound closure. Mechanisms identified included promotion of cell migration, stem cell mobilization, inhibition of inflammation, and reduction of apoptosis. No significant adverse findings reported across models.',
-        citation: 'Treadwell, T., et al. (2012). The regenerative compound thymosin β4 accelerates the rate of dermal healing in preclinical animal models and in patients. Annals of the New York Academy of Sciences, 1270, 37–44.',
+        citation: 'Treadwell, T., et al. (2012). The regenerative chemical thymosin β4 accelerates the rate of dermal healing in preclinical animal models and in patients. Annals of the New York Academy of Sciences, 1270, 37–44.',
         citationUrl: 'https://pubmed.ncbi.nlm.nih.gov/23050815/',
       },
       {
@@ -349,7 +349,7 @@ export const products: Product[] = [
       },
       {
         title: 'Medial Collateral Ligament Repair Study in Rats',
-        protocol: 'Controlled study in rats evaluated the effect of Thymosin Beta-4 on ligament healing following sharp transection of the medial collateral ligament over 4 weeks, assessed via histology, transmission electron microscopy, and biomechanical testing. Treatment group received 100 mcL of fibrin sealant containing 1 mcg of Thymosin Beta-4 placed directly in the ligament gap at time of surgery. Controls received fibrin sealant without active compound. Assessments conducted at 4 weeks post surgery.',
+        protocol: 'Controlled study in rats evaluated the effect of Thymosin Beta-4 on ligament healing following sharp transection of the medial collateral ligament over 4 weeks, assessed via histology, transmission electron microscopy, and biomechanical testing. Treatment group received 100 mcL of fibrin sealant containing 1 mcg of Thymosin Beta-4 placed directly in the ligament gap at time of surgery. Controls received fibrin sealant without active chemical. Assessments conducted at 4 weeks post surgery.',
         effects: 'Treated ligament tissue demonstrated uniform and evenly spaced collagen fiber bundles compared to disorganized fiber arrangement in controls. Collagen fibril diameter in granulation tissue was significantly increased in the treated group. Biomechanical testing confirmed superior structural properties in treated tissue. No adverse findings reported.',
         citation: 'Bae, J.H., et al. (2013). Thymosin β4 enhances the healing of medial collateral ligament injury in rat. Regulatory Research, 183, 16–20.',
         citationUrl: 'https://pubmed.ncbi.nlm.nih.gov/23523891/',
@@ -377,7 +377,7 @@ export const products: Product[] = [
       },
       {
         question: 'How long does a vial remain stable once received?',
-        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the compound should be used within the timeframe appropriate for the specific compound and storage conditions.',
+        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the lyophilized chemical should be used within the timeframe appropriate for the specific chemical and storage conditions.',
       },
     ],
   },
@@ -385,13 +385,13 @@ export const products: Product[] = [
     id: '12',
     name: 'BPC-157',
     slug: 'bpc-157',
-    category: 'BPC Compounds',
+    category: 'BPC',
     catalogSubtitle: 'BPC-157 (10mg)',
     purity: 99.5,
     price: 59.99,
     form: 'Lyophilized Powder',
     image: '/images/bpc157.png',
-    description: 'Body Protection Compound for tissue repair research.',
+    description: 'Body protection chemical for tissue repair research.',
     vialMg: '10 mg',
     specs: '3mL vial',
     overview: 'BPC-157 is theorized to support and accelerate the body\'s natural repair process across multiple tissue types, with research suggesting involvement in blood vessel formation, the movement of repair cells toward damaged tissue, and the regulation of inflammation in musculoskeletal and soft tissue research models.',
@@ -455,7 +455,7 @@ export const products: Product[] = [
       },
       {
         question: 'How long does a vial remain stable once received?',
-        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the compound should be used within the timeframe appropriate for the specific compound and storage conditions.',
+        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the lyophilized chemical should be used within the timeframe appropriate for the specific chemical and storage conditions.',
       },
     ],
   },
@@ -468,7 +468,7 @@ export const products: Product[] = [
     price: 54.99,
     form: 'Lyophilized Powder',
     image: '/images/epitalon.png',
-    description: 'Compound for longevity and telomere research.',
+    description: 'Lyophilized chemical for longevity and telomere research.',
     vialMg: '10 mg',
     specs: '3mL vial',
   },
@@ -481,10 +481,10 @@ export const products: Product[] = [
     price: 49.99,
     form: 'Lyophilized Powder',
     image: '/images/ghk-cu.png',
-    description: 'Copper-binding compound for tissue repair and skin regeneration research.',
+    description: 'Copper-binding lyophilized chemical for tissue repair and skin regeneration research.',
     vialMg: '100 mg',
     specs: '3mL vial',
-    overview: 'GHK-Cu is a naturally occurring copper-binding compound found in plasma, saliva, and urine that declines significantly with age. Research suggests it supports tissue repair and skin regeneration by activating fibroblast activity, stimulating collagen and elastin synthesis, and modulating a broad range of gene expression pathways involved in healing and cellular maintenance.',
+    overview: 'GHK-Cu is a naturally occurring copper-binding lyophilized chemical found in plasma, saliva, and urine that declines significantly with age. Research suggests it supports tissue repair and skin regeneration by activating fibroblast activity, stimulating collagen and elastin synthesis, and modulating a broad range of gene expression pathways involved in healing and cellular maintenance.',
     researchEffects: [
       'Theorized to bind copper and deliver it directly to fibroblasts, stimulating synthesis of type I collagen, elastin, glycosaminoglycans, and the small proteoglycan decorin, which together form the structural foundation of healthy connective tissue',
       'Research suggests GHK-Cu modulates both matrix metalloproteinases and their inhibitors, supporting balanced tissue remodeling rather than net degradation or net fibrosis',
@@ -511,7 +511,7 @@ export const products: Product[] = [
       {
         title: 'Collagen Production Comparison Trial — GHK-Cu, Vitamin C, and Retinoic Acid',
         protocol: 'Controlled observational trial. Subjects applied topical GHK-Cu, vitamin C, or retinoic acid cream to the thigh for a defined treatment period. Skin biopsy samples collected and analyzed using immunohistological techniques to quantify collagen production in dermal tissue.',
-        effects: 'GHK-Cu produced collagen increases in 70% of subjects. Vitamin C produced collagen increases in 50% of subjects. Retinoic acid produced collagen increases in 40% of subjects. GHK-Cu demonstrated the highest collagen-stimulating response of the three compounds tested. No serious adverse findings reported.',
+        effects: 'GHK-Cu produced collagen increases in 70% of subjects. Vitamin C produced collagen increases in 50% of subjects. Retinoic acid produced collagen increases in 40% of subjects. GHK-Cu demonstrated the highest collagen-stimulating response of the three chemicals tested. No serious adverse findings reported.',
         citation: 'Abdulghani, A.A., et al. (1998). Copper complexes improve skin firmness of healthy volunteers. Cosmetics and Toiletries, 114, 73–83. Referenced in: Pickart, L., et al. (2015). GHK as a Natural Modulator of Multiple Cellular Pathways in Skin Regeneration. BioMed Research International.',
         citationUrl: 'https://pmc.ncbi.nlm.nih.gov/articles/PMC4508379/',
       },
@@ -538,7 +538,7 @@ export const products: Product[] = [
       },
       {
         question: 'How long does a vial remain stable once received?',
-        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the compound should be used within the timeframe appropriate for the specific compound and storage conditions.',
+        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the lyophilized chemical should be used within the timeframe appropriate for the specific chemical and storage conditions.',
       },
     ],
   },
@@ -554,11 +554,11 @@ export const products: Product[] = [
     description: 'CJC 1295 (No DAC) and Ipamorelin combination blend.',
     vialMg: '5 mg/5 mg',
     specs: '3mL vial',
-    overview: 'CJC-1295 No DAC + Ipamorelin is a two-compound blend studied for its ability to stimulate growth hormone release through two separate biological pathways simultaneously. Research shows each compound mimics a different natural signal, producing a more complete growth hormone stimulus when combined, released in natural pulses and without meaningfully raising cortisol or other stress hormones.',
+    overview: 'CJC-1295 No DAC + Ipamorelin is a two-chemical blend studied for its ability to stimulate growth hormone release through two separate biological pathways simultaneously. Research shows each lyophilized chemical mimics a different natural signal, producing a more complete growth hormone stimulus when combined, released in natural pulses and without meaningfully raising cortisol or other stress hormones.',
     researchEffects: [
       'CJC-1295 No DAC is theorized to stimulate growth hormone release by binding to GHRH receptors on pituitary somatotroph cells, activating cAMP and PKA signaling pathways to enhance GH synthesis and secretion',
       'Ipamorelin is theorized to amplify GH release through a distinct and complementary pathway, binding to ghrelin receptors and triggering intracellular calcium mobilization to produce an additional GH pulse',
-      'Research suggests the two compounds produce a combined GH stimulus exceeding what either achieves independently, with GH levels observed to increase 2 to 10 fold over baseline in human studies of GHRH analog administration',
+      'Research suggests the two chemicals produce a combined GH stimulus exceeding what either achieves independently, with GH levels observed to increase 2 to 10 fold over baseline in human studies of GHRH analog administration',
       'IGF-1 elevation of 1.5 to 3 fold has been observed in studies, with levels remaining elevated for 9 to 11 days following single administration and above baseline for up to 28 days with multiple administrations',
       'Ipamorelin has been shown to selectively stimulate GH release without meaningfully raising cortisol, ACTH, or prolactin, distinguishing it from less selective growth hormone secretagogues',
       'Areas of active research include growth hormone axis regulation, metabolic function, body composition, and age-related hormonal decline models',
@@ -601,7 +601,7 @@ export const products: Product[] = [
       },
       {
         question: 'How long does a vial remain stable once received?',
-        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the compound should be used within the timeframe appropriate for the specific compound and storage conditions.',
+        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the lyophilized chemical should be used within the timeframe appropriate for the specific chemical and storage conditions.',
       },
     ],
   },
@@ -617,7 +617,7 @@ export const products: Product[] = [
     description: 'GLP receptor agonist for metabolic research.',
     vialMg: '10 mg',
     specs: '3mL vial',
-    overview: 'GLP-3R is an investigational compound studied for its simultaneous activity on GLP-1, GIP, and glucagon receptors, the three primary drivers of metabolic regulation. Research explores how each receptor contributes a distinct effect: appetite reduction and improved insulin response, enhanced insulin efficiency, and increased resting metabolic rate.',
+    overview: 'GLP-3R is an investigational lyophilized chemical studied for its simultaneous activity on GLP-1, GIP, and glucagon receptors, the three primary drivers of metabolic regulation. Research explores how each receptor contributes a distinct effect: appetite reduction and improved insulin response, enhanced insulin efficiency, and increased resting metabolic rate.',
     researchEffects: [
       'Theorized to reduce food intake and slow gastric emptying through GLP-1 receptor activation, producing appetite suppression and improved postprandial glucose regulation',
       'GIP receptor activation is theorized to enhance insulin efficiency and support lipid clearance, contributing to improvements in body composition and metabolic markers beyond appetite reduction alone',
@@ -671,7 +671,7 @@ export const products: Product[] = [
       },
       {
         question: 'How long does a vial remain stable once received?',
-        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the compound should be used within the timeframe appropriate for the specific compound and storage conditions.',
+        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the lyophilized chemical should be used within the timeframe appropriate for the specific chemical and storage conditions.',
       },
     ],
   },
@@ -688,7 +688,7 @@ export const products: Product[] = [
     description: 'Melanocortin analog for research (PT-141).',
     vialMg: '10 mg',
     specs: '3mL vial',
-    overview: 'PT-141 is a synthetic compound studied for its activity on melanocortin receptors in the brain, which are directly involved in regulating sexual motivation and desire. Rather than increasing blood flow to genital tissue like most compounds in this category, it initiates the arousal signal at its source, upstream in the central nervous system.',
+    overview: 'PT-141 is a synthetic lyophilized chemical studied for its activity on melanocortin receptors in the brain, which are directly involved in regulating sexual motivation and desire. Rather than increasing blood flow to genital tissue like most chemicals in this category, it initiates the arousal signal at its source, upstream in the central nervous system.',
     researchEffects: [
       'Theorized to activate MC3R and MC4R melanocortin receptors in the hypothalamus and limbic structures, regions of the brain directly involved in sexual motivation, desire, and arousal signaling',
       'Research suggests PT-141 enhances oxytocin and dopamine release in reward pathways and activates neurons in the paraventricular nucleus, initiating the arousal signal centrally rather than through peripheral vascular mechanisms',
@@ -742,7 +742,7 @@ export const products: Product[] = [
       },
       {
         question: 'How long does a vial remain stable once received?',
-        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the compound should be used within the timeframe appropriate for the specific compound and storage conditions.',
+        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the lyophilized chemical should be used within the timeframe appropriate for the specific chemical and storage conditions.',
       },
     ],
   },
@@ -755,10 +755,10 @@ export const products: Product[] = [
     price: 94.99,
     form: 'Lyophilized Powder',
     image: '/images/mots-c.png',
-    description: 'Mitochondrial-derived compound and exercise mimetic for metabolic research.',
+    description: 'Mitochondrial-derived lyophilized chemical and exercise mimetic for metabolic research.',
     vialMg: '10 mg',
     specs: '10mg',
-    overview: 'MOTS-c is a 16-amino-acid compound encoded within the mitochondrial genome that functions as a cellular energy sensor and metabolic regulator. Research suggests it activates the AMPK pathway in skeletal muscle, promoting glucose uptake, insulin sensitivity, and mitochondrial function, and is theorized to act as an exercise mimetic by replicating key molecular signals that exercise generates endogenously.',
+    overview: 'MOTS-c is a 16-amino-acid lyophilized chemical encoded within the mitochondrial genome that functions as a cellular energy sensor and metabolic regulator. Research suggests it activates the AMPK pathway in skeletal muscle, promoting glucose uptake, insulin sensitivity, and mitochondrial function, and is theorized to act as an exercise mimetic by replicating key molecular signals that exercise generates endogenously.',
     researchEffects: [
       'Theorized to activate AMPK via inhibition of the folate cycle and its downstream de novo purine biosynthesis pathway, increasing glucose entry into cells and improving metabolic flexibility across insulin-sensitive tissues',
       'Research indicates MOTS-c translocates from mitochondria to the nucleus under metabolic stress in an AMPK-dependent manner, where it binds transcription factors to regulate nuclear gene expression related to antioxidant defense and stress resistance',
@@ -772,7 +772,7 @@ export const products: Product[] = [
         title: 'Founding Metabolic Homeostasis Study in Mice — AMPK Activation and Insulin Sensitivity',
         protocol: 'Controlled preclinical study in mice. MOTS-c administered systemically to mice on standard diet, high-fat diet, and aging cohorts. Insulin sensitivity assessed by glucose tolerance testing and insulin tolerance testing. Body weight, glucose uptake in skeletal muscle, AMPK activation, folate cycle activity, and metabolic marker expression measured. Genetic and pharmacological screening used to identify mechanism of action.',
         effects: 'MOTS-c treatment prevented age-dependent insulin resistance in normally aging mice. MOTS-c prevented high-fat-diet-induced insulin resistance and suppressed diet-induced obesity. Cellular mechanism identified as inhibition of the folate cycle leading to AICAR accumulation and AMPK activation, promoting glucose uptake into skeletal muscle. Skeletal muscle was confirmed as the primary target organ. No adverse findings reported.',
-        citation: 'Lee, C., et al. (2015). The mitochondrial-derived compound MOTS-c promotes metabolic homeostasis and reduces obesity and insulin resistance. Cell Metabolism, 21(3), 443–454.',
+        citation: 'Lee, C., et al. (2015). The mitochondrial-derived chemical MOTS-c promotes metabolic homeostasis and reduces obesity and insulin resistance. Cell Metabolism, 21(3), 443–454.',
         citationUrl: 'https://doi.org/10.1016/j.cmet.2015.02.009',
       },
       {
@@ -805,7 +805,7 @@ export const products: Product[] = [
       },
       {
         question: 'How long does a vial remain stable once received?',
-        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the compound should be used within the timeframe appropriate for the specific compound and storage conditions.',
+        answer: 'Lyophilized vials should be stored in a cool, dry environment away from direct light. Under proper storage conditions, stability is maintained for an extended period. Refer to the COA for lot-specific stability data. Once reconstituted, the lyophilized chemical should be used within the timeframe appropriate for the specific chemical and storage conditions.',
       },
     ],
   },
@@ -819,14 +819,14 @@ export const products: Product[] = [
     price: 14.99,
     form: 'Solution',
     image: '/images/bac-water.png',
-    description: 'Sterile water with 0.9% benzyl alcohol for reconstituting lyophilized compounds.',
+    description: 'Sterile water with 0.9% benzyl alcohol for reconstituting lyophilized chemicals.',
     vialMg: '30 mL',
     specs: '30mL vial',
-    overview: 'Bacteriostatic water is sterile water containing 0.9% benzyl alcohol, which inhibits the growth of most bacteria. It is used in laboratory and research settings as a diluent for reconstituting lyophilized (freeze-dried) compounds.',
+    overview: 'Bacteriostatic water is sterile water containing 0.9% benzyl alcohol, which inhibits the growth of most bacteria. It is used in laboratory and research settings as a diluent for reconstituting lyophilized (freeze-dried) chemicals.',
     researchEffects: [
-      'Benzyl alcohol at 0.9% concentration is widely documented to inhibit bacterial growth in solution, preserving the integrity of reconstituted compounds across multiple uses',
+      'Benzyl alcohol at 0.9% concentration is widely documented to inhibit bacterial growth in solution, preserving the integrity of reconstituted chemicals across multiple uses',
       'Research confirms bacteriostatic water maintains sterility longer than standard water for injection when a vial is accessed repeatedly',
-      'It is the broadly accepted diluent in laboratory research settings for compound reconstitution due to its compatibility with a wide range of compounds',
+      'It is the broadly accepted diluent in laboratory research settings for chemical reconstitution due to its compatibility with a wide range of lyophilized chemicals',
     ],
     faq: [
       {
@@ -835,7 +835,7 @@ export const products: Product[] = [
       },
       {
         question: 'Does the product come with handling guidance?',
-        answer: 'Each vial is supplied as a solution intended strictly for laboratory research use as a diluent for reconstituting lyophilized compounds. Our team is available via text to assist with any technical questions regarding storage or handling within a research context.',
+        answer: 'Each vial is supplied as a solution intended strictly for laboratory research use as a diluent for reconstituting lyophilized chemicals. Our team is available via text to assist with any technical questions regarding storage or handling within a research context.',
       },
       {
         question: 'What is the exact quantity in each vial?',
@@ -843,7 +843,7 @@ export const products: Product[] = [
       },
       {
         question: 'What additional supplies are needed for research use?',
-        answer: 'Depending on the nature of your research, you may require appropriate syringes and sterile handling equipment for reconstitution of lyophilized compounds. These are standard laboratory consumables. Our team can point you in the right direction if needed.',
+        answer: 'Depending on the nature of your research, you may require appropriate syringes and sterile handling equipment for reconstitution of lyophilized chemicals. These are standard laboratory consumables. Our team can point you in the right direction if needed.',
       },
     ],
   },

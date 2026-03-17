@@ -53,7 +53,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
 
         <Link href={`/products/${product.slug}`} className="block">
-          <Button variant="primary" size="md" className="w-full">
+          <Button variant="primary" size="md" className="w-full border-2 border-white text-white">
             View Product
           </Button>
         </Link>

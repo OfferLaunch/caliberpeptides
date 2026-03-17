@@ -5,7 +5,7 @@ import { TestimonialsColumn, type Testimonial } from '@/components/ui/testimonia
 
 const testimonials: Testimonial[] = [
   {
-    text: 'Consistent quality and clear COAs. Every order has been exactly as specified. This is our go-to source for research-grade compounds.',
+    text: 'Consistent quality and clear COAs. Every order has been exactly as specified. This is our go-to source for research-grade lyophilized chemicals.',
     image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=face',
     name: 'Dr. Sarah Chen',
     role: 'Research Scientist',

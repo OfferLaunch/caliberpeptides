@@ -177,7 +177,7 @@ export default function ProductDetailPage() {
                   variant="solid"
                   size="lg"
                   onClick={handleAddToCart}
-                  className="flex-1"
+                  className="flex-1 border-2 border-white text-white"
                 >
                   {added ? '✓ Added to Cart' : 'Add to Cart'}
                 </PillButton>

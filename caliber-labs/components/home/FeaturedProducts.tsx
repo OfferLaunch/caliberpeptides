@@ -38,7 +38,7 @@ export default function FeaturedProducts() {
         <div className="mb-12">
           <SectionHeader
             title="Featured Products"
-            subtitle="Lab-verified compounds for research applications"
+            subtitle="Lab-verified lyophilized chemicals for research applications"
           />
         </div>
 
