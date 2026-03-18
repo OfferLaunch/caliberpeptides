@@ -60,25 +60,14 @@ export default function DisclaimerModal() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-6 sm:p-8 flex-shrink-0">
-              {/* Navy Emblem at top */}
-              <div className="flex justify-center mb-4">
+              {/* Navy Emblem centered above heading */}
+              <div className="flex justify-center mb-4 sm:mb-6">
                 <Image
                   src="/logos/Emblems/Navy%20Emblem.png"
                   alt="Caliber Labs"
                   width={80}
                   height={80}
                   className="w-16 h-16 object-contain"
-                />
-              </div>
-              {/* Logo */}
-              <div className="flex justify-center mb-4 sm:mb-6">
-                <Image
-                  src="/logos/Text Only/brown text only.png"
-                  alt="Caliber Labs"
-                  width={224}
-                  height={112}
-                  style={{ width: 'auto', height: '40px' }}
-                  quality={95}
                 />
               </div>
 
