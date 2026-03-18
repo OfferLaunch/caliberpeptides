@@ -60,6 +60,16 @@ export default function DisclaimerModal() {
             onClick={(e) => e.stopPropagation()}
           >
             <div className="p-6 sm:p-8 flex-shrink-0">
+              {/* Navy Emblem at top */}
+              <div className="flex justify-center mb-4">
+                <Image
+                  src="/logos/Emblems/Navy%20Emblem.png"
+                  alt="Caliber Labs"
+                  width={80}
+                  height={80}
+                  className="w-16 h-16 object-contain"
+                />
+              </div>
               {/* Logo */}
               <div className="flex justify-center mb-4 sm:mb-6">
                 <Image
