@@ -169,7 +169,6 @@ export default function Navbar() {
               </NavigationMenuList>
             </NavigationMenu>
             <ProductSearch />
-            <CartDropdown />
             <Link
               href="/products"
               className="inline-flex items-center justify-center rounded-full bg-navy text-white px-6 py-2 font-body text-sm font-bold hover:bg-navy/90 transition-all hover:scale-105 shrink-0 border-2 border-white"
@@ -177,6 +176,9 @@ export default function Navbar() {
               Shop Now
             </Link>
           </div>
+
+          {/* Cart: visible on all breakpoints; on mobile sits next to hamburger */}
+          <CartDropdown />
 
           {/* Mobile menu button */}
           <button

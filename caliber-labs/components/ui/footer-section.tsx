@@ -3,14 +3,13 @@
 import * as React from "react"
 import Image from "next/image"
 import { ShadcnButton as Button } from "@/components/ui/shadcn-button"
-import { Input } from "@/components/ui/input"
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip"
-import { Facebook, Instagram, Send } from "lucide-react"
+import { Facebook, Instagram } from "lucide-react"
 import Link from "next/link"
 
 function FooterSection() {
@@ -36,24 +35,9 @@ function FooterSection() {
             <h2 className="relative z-10 mb-4 text-xl font-display tracking-tight drop-shadow-md">
               Stay Connected
             </h2>
-            <p className="mb-6 font-body text-sm text-white/80">
-              Join our research community for the latest research insights and updates.
+            <p className="font-body text-sm text-white/80">
+              Follow us on social media for updates.
             </p>
-            <form className="relative" onSubmit={(e) => e.preventDefault()}>
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                className="pr-12 backdrop-blur-sm"
-              />
-              <Button
-                type="submit"
-                size="icon"
-                className="absolute right-1 top-1 h-8 w-8 rounded-full bg-white text-sage transition-transform hover:scale-105 hover:bg-white/90"
-              >
-                <Send className="h-4 w-4" />
-                <span className="sr-only">Subscribe</span>
-              </Button>
-            </form>
             <div className="absolute -right-4 top-0 h-24 w-24 rounded-full bg-white/10 blur-2xl" />
           </div>
 

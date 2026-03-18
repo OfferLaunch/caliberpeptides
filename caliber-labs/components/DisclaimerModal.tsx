@@ -8,9 +8,9 @@ export default function DisclaimerModal() {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    // Check if user has already accepted the disclaimer
-    const hasAccepted = localStorage.getItem('caliber_disclaimer_accepted');
-    if (!hasAccepted) {
+    // Show disclaimer once per session so recurring visitors see it again each visit
+    const hasAcceptedThisSession = sessionStorage.getItem('caliber_disclaimer_accepted');
+    if (!hasAcceptedThisSession) {
       setShowModal(true);
     }
   }, []);
@@ -26,7 +26,7 @@ export default function DisclaimerModal() {
   }, [showModal]);
 
   const handleAgree = () => {
-    localStorage.setItem('caliber_disclaimer_accepted', 'true');
+    sessionStorage.setItem('caliber_disclaimer_accepted', 'true');
     setShowModal(false);
   };
 
