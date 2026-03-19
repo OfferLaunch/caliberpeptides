@@ -111,7 +111,7 @@ export default function AccessModal() {
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="max-w-lg w-full max-h-[90vh] overflow-y-auto"
+        className="max-w-2xl w-full max-h-[90vh] overflow-y-auto"
       >
         {/* Logo */}
         <div className="flex justify-center mb-8">
@@ -167,34 +167,36 @@ export default function AccessModal() {
               </p>
             </div>
 
-            <div className="mb-8 space-y-3">
+            <div className="mb-8">
               <p className="text-sm font-semibold text-espresso mb-4">
                 Please select your research purpose:
               </p>
-              {purposeOptions.map((option) => (
-                <label
-                  key={option.value}
-                  className="flex items-center p-4 border-2 border-glass rounded-lg cursor-pointer hover:bg-parchment/50 transition-colors"
-                  style={{
-                    borderColor:
-                      selectedPurpose === option.value ? '#7D8F78' : '#D1DBCB',
-                    backgroundColor:
-                      selectedPurpose === option.value ? '#F5F2ED' : 'white',
-                  }}
-                >
-                  <input
-                    type="radio"
-                    name="purpose"
-                    value={option.value}
-                    checked={selectedPurpose === option.value}
-                    onChange={() => setSelectedPurpose(option.value)}
-                    className="w-4 h-4 text-sage"
-                  />
-                  <span className="ml-3 text-espresso font-body">
-                    {option.label}
-                  </span>
-                </label>
-              ))}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                {purposeOptions.map((option) => (
+                  <label
+                    key={option.value}
+                    className="flex items-center p-4 border-2 border-glass rounded-lg cursor-pointer hover:bg-parchment/50 transition-colors"
+                    style={{
+                      borderColor:
+                        selectedPurpose === option.value ? '#7D8F78' : '#D1DBCB',
+                      backgroundColor:
+                        selectedPurpose === option.value ? '#F5F2ED' : 'white',
+                    }}
+                  >
+                    <input
+                      type="radio"
+                      name="purpose"
+                      value={option.value}
+                      checked={selectedPurpose === option.value}
+                      onChange={() => setSelectedPurpose(option.value)}
+                      className="w-4 h-4 text-sage"
+                    />
+                    <span className="ml-3 text-espresso font-body text-sm">
+                      {option.label}
+                    </span>
+                  </label>
+                ))}
+              </div>
             </div>
 
             <button
