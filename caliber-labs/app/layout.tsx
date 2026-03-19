@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { DM_Serif_Display, Plus_Jakarta_Sans, IBM_Plex_Mono } from "next/font/google";
-import DisclaimerModal from "@/components/DisclaimerModal";
 import { CartProvider } from "@/context/CartContext";
 import "./globals.css";
 
@@ -39,7 +38,6 @@ export default function RootLayout({
         className={`${dmSerifDisplay.variable} ${plusJakartaSans.variable} ${ibmPlexMono.variable} antialiased`}
       >
         <CartProvider>
-          <DisclaimerModal />
           {children}
         </CartProvider>
       </body>
