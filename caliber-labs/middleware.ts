@@ -14,36 +14,56 @@ export async function middleware(request: NextRequest) {
   const supabase = createMiddlewareSupabaseClient(request, response)
 
   try {
-    // Check if user is authenticated
     const {
       data: { user },
     } = await supabase.auth.getUser()
 
-    // Check for research purpose cookie
     const hasPurposeCookie = request.cookies.has('caliber_research_purpose')
+    const accessOverlay =
+      request.nextUrl.searchParams.get('access') === 'true'
 
-    // If on public route, allow access
+    const fullyGated = Boolean(user && hasPurposeCookie)
+
+    // Logged-in users hitting the gate overlay → continue to intended page
+    if (pathname === '/' && accessOverlay && fullyGated) {
+      const rawNext = request.nextUrl.searchParams.get('next') || '/'
+      const safeNext =
+        rawNext.startsWith('/') && !rawNext.startsWith('//')
+          ? rawNext
+          : '/'
+      return NextResponse.redirect(new URL(safeNext, request.url))
+    }
+
+    // Home with access overlay: render homepage + modal (no redirect loop)
+    if (pathname === '/' && accessOverlay) {
+      return response
+    }
+
     if (publicRoutes.some((route) => pathname.startsWith(route))) {
-      // If authenticated and visiting /access, redirect to home
       if (user && pathname === '/access') {
         return NextResponse.redirect(new URL('/', request.url))
       }
       return response
     }
 
-    // If not authenticated OR missing purpose cookie, redirect to /access
-    if (!user || !hasPurposeCookie) {
-      const accessUrl = new URL('/access', request.url)
-      accessUrl.searchParams.set('next', pathname)
-      return NextResponse.redirect(accessUrl)
+    if (!fullyGated) {
+      const gateUrl = new URL('/', request.url)
+      gateUrl.searchParams.set('access', 'true')
+      const returnTo =
+        pathname + (request.nextUrl.search || '')
+      gateUrl.searchParams.set(
+        'next',
+        returnTo.startsWith('/') ? returnTo : '/'
+      )
+      return NextResponse.redirect(gateUrl)
     }
 
     return response
-  } catch (error) {
-    // On error, redirect to /access to be safe
-    const accessUrl = new URL('/access', request.url)
-    accessUrl.searchParams.set('next', pathname)
-    return NextResponse.redirect(accessUrl)
+  } catch {
+    const gateUrl = new URL('/', request.url)
+    gateUrl.searchParams.set('access', 'true')
+    gateUrl.searchParams.set('next', pathname)
+    return NextResponse.redirect(gateUrl)
   }
 }
 

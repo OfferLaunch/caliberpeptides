@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createSupabaseBrowserClient } from '@/lib/supabase'
 import Image from 'next/image'
@@ -29,6 +29,14 @@ export default function AccessModal() {
   const [error, setError] = useState('')
   const [loading, setLoading] = useState(false)
   const [checkEmail, setCheckEmail] = useState(false)
+
+  useEffect(() => {
+    const prev = document.body.style.overflow
+    document.body.style.overflow = 'hidden'
+    return () => {
+      document.body.style.overflow = prev
+    }
+  }, [])
 
   const purposeOptions: { value: ResearchPurpose; label: string }[] = [
     { value: 'independent', label: 'Independent Researcher' },
@@ -106,40 +114,46 @@ export default function AccessModal() {
   }
 
   return (
-    <div className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 z-50 overflow-hidden">
+    <div
+      className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden bg-espresso/20 backdrop-blur-[2px] p-4"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Research access"
+    >
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
-        className="max-w-2xl w-full max-h-[90vh] overflow-y-auto"
+        className="pointer-events-auto w-full max-w-2xl max-h-[90vh] overflow-y-auto lg:max-h-[calc(100dvh-1.25rem)] lg:max-w-6xl lg:overflow-visible"
+        onClick={(e) => e.stopPropagation()}
       >
         {/* Logo */}
-        <div className="flex justify-center mb-8">
+        <div className="mb-8 flex justify-center lg:mb-4">
           <Image
             src="/logos/Emblems/Navy%20Emblem.png"
             alt="Caliber Labs"
             width={80}
             height={80}
-            className="w-16 h-16 object-contain"
+            className="h-16 w-16 object-contain lg:h-12 lg:w-12"
           />
         </div>
 
         {/* Step 1: Research Purpose */}
         {step === 'purpose' && (
-          <div className="bg-white rounded-2xl shadow-lg p-8">
-            <h1 className="font-display text-2xl text-espresso mb-2 text-center">
+          <div className="rounded-2xl bg-white p-8 shadow-lg lg:grid lg:max-h-[calc(100dvh-6.5rem)] lg:grid-cols-2 lg:gap-x-10 lg:gap-y-3 lg:p-6 lg:items-stretch">
+            <h1 className="font-display mb-2 text-center text-2xl text-espresso lg:col-span-2 lg:mb-0 lg:text-xl">
               Research Use Only
             </h1>
-            <div className="w-full h-px bg-glass mb-6" />
+            <div className="mb-6 h-px w-full bg-glass lg:col-span-2 lg:mb-0" />
 
-            <div className="mb-6 space-y-4">
-              <p className="text-sm text-espresso/80 leading-relaxed">
+            <div className="mb-6 space-y-4 lg:mb-0 lg:min-h-0 lg:space-y-2 lg:overflow-y-auto lg:pr-1 lg:text-[13px] lg:leading-snug">
+              <p className="text-sm leading-relaxed text-espresso/80 lg:text-[13px]">
                 All products offered by Caliber Labs are intended for research
                 purposes only and are not approved by the FDA for clinical,
                 therapeutic, or personal use. By accessing this website and
                 placing an order, you represent and warrant that:
               </p>
-              <ul className="list-disc list-inside space-y-2 text-sm text-espresso/70">
+              <ul className="list-disc list-inside space-y-2 text-sm text-espresso/70 lg:space-y-1 lg:text-[12px] lg:leading-snug">
                 <li>
                   You are purchasing these products for legitimate research
                   purposes only
@@ -158,7 +172,7 @@ export default function AccessModal() {
                   governing the purchase and use of these materials
                 </li>
               </ul>
-              <p className="text-sm text-espresso/80 leading-relaxed">
+              <p className="text-sm leading-relaxed text-espresso/80 lg:text-[13px]">
                 Caliber Labs reserves the right to verify your eligibility and
                 may request documentation of your research affiliation. By
                 clicking "Continue" below, you acknowledge that you have read
@@ -167,15 +181,15 @@ export default function AccessModal() {
               </p>
             </div>
 
-            <div className="mb-8">
-              <p className="text-sm font-semibold text-espresso mb-4">
+            <div className="flex min-h-0 flex-col lg:min-h-0">
+              <p className="mb-4 text-sm font-semibold text-espresso lg:mb-2 lg:text-xs">
                 Please select your research purpose:
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div className="mb-8 grid grid-cols-1 gap-3 md:grid-cols-2 lg:mb-3 lg:gap-2">
                 {purposeOptions.map((option) => (
                   <label
                     key={option.value}
-                    className="flex items-center p-4 border-2 border-glass rounded-lg cursor-pointer hover:bg-parchment/50 transition-colors"
+                    className="flex cursor-pointer items-center rounded-lg border-2 border-glass p-4 transition-colors hover:bg-parchment/50 lg:p-2.5"
                     style={{
                       borderColor:
                         selectedPurpose === option.value ? '#7D8F78' : '#D1DBCB',
@@ -189,29 +203,30 @@ export default function AccessModal() {
                       value={option.value}
                       checked={selectedPurpose === option.value}
                       onChange={() => setSelectedPurpose(option.value)}
-                      className="w-4 h-4 text-sage"
+                      className="h-4 w-4 shrink-0 text-sage"
                     />
-                    <span className="ml-3 text-espresso font-body text-sm">
+                    <span className="ml-3 font-body text-sm text-espresso lg:text-xs lg:leading-tight">
                       {option.label}
                     </span>
                   </label>
                 ))}
               </div>
-            </div>
 
-            <button
-              onClick={handleContinuePurpose}
-              disabled={!selectedPurpose}
-              className="w-full bg-sage text-white rounded-lg py-3 font-body font-semibold hover:bg-sage/90 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
-            >
-              Continue
-            </button>
+              <button
+                type="button"
+                onClick={handleContinuePurpose}
+                disabled={!selectedPurpose}
+                className="mt-auto w-full rounded-lg bg-sage py-3 font-body font-semibold text-white transition-colors hover:bg-sage/90 disabled:cursor-not-allowed disabled:opacity-50 lg:py-2.5 lg:text-sm"
+              >
+                Continue
+              </button>
+            </div>
           </div>
         )}
 
         {/* Step 2: Sign In / Register */}
         {step === 'auth' && (
-          <div className="bg-white rounded-2xl shadow-lg p-8">
+          <div className="mx-auto max-w-2xl rounded-2xl bg-white p-8 shadow-lg lg:max-w-md">
             <h1 className="font-display text-2xl text-espresso mb-2 text-center">
               {authMode === 'signin' ? 'Sign In' : 'Create Account'}
             </h1>
