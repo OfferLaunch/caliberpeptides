@@ -1,6 +1,6 @@
 'use client'
 
-import { Suspense, useState } from 'react'
+import { useState } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { createSupabaseBrowserClient } from '@/lib/supabase'
 import Image from 'next/image'
@@ -14,7 +14,7 @@ type ResearchPurpose =
   | 'cosmetic'
   | 'supply'
 
-function AccessPageContent() {
+export default function AccessModal() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const nextPath = searchParams.get('next') || '/'
@@ -316,21 +316,5 @@ function AccessPageContent() {
         )}
       </motion.div>
     </div>
-  )
-}
-
-export default function AccessPage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="min-h-screen bg-parchment flex items-center justify-center">
-          <div className="text-center">
-            <p className="text-espresso font-body">Loading...</p>
-          </div>
-        </div>
-      }
-    >
-      <AccessPageContent />
-    </Suspense>
   )
 }

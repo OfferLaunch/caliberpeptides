@@ -22,11 +22,11 @@ This doc describes what’s needed to gate site access and add email collection 
 
 ## What You Already Have
 
-- **Next.js 16** (App Router), **NextAuth** and **bcryptjs** in `package.json`, **Prisma** with PostgreSQL.
-- **DisclaimerModal** — one-time “Research use only” + “I Agree” (sessionStorage).
+- **Next.js 16** (App Router), **Supabase** (auth/session via middleware and clients).
+- Access gating via **`/access`** and middleware (see app code); no app-owned SQL/ORM layer yet.
 - **WooCommerce checkout** — `POST /api/woocommerce/checkout` expects `email` + `cart`; no auth required yet.
 
-You do **not** yet have: NextAuth configured, Prisma `User` model, research-purpose step, login/register UI, or email capture backend.
+You do **not** yet have: a database layer (e.g. Prisma + `User` model), the full two-step research portal described below, dedicated login/register UI for a custom credentials flow, or email capture backend. (Supabase Auth is available; the sections below include an optional **NextAuth** path—add `next-auth`, `bcryptjs`, and `@types/bcryptjs` only if you implement that.)
 
 ---
 
@@ -61,6 +61,8 @@ Add (and keep secret):
 ---
 
 ### 3. NextAuth Setup
+
+If you use this stack, install: `npm install next-auth bcryptjs` and `npm install -D @types/bcryptjs`. (Alternatively, handle email/password entirely with **Supabase Auth** and skip NextAuth.)
 
 - **Provider:** Credentials (email + password).
 - **Credentials authorize flow:**  
